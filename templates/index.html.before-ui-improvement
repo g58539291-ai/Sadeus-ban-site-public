@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>𓆙 BAN SITE</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#090909;
+    color:#fff;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    width:min(700px,92%);
+    margin:35px auto;
+}
+
+header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+h1{
+    margin:0;
+    font-size:32px;
+}
+
+.subtitle{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.card{
+    background:#121212;
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    font-weight:bold;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    border:1px solid #333;
+    background:#0b0b0b;
+    color:#fff;
+    outline:none;
+    font-size:15px;
+}
+
+textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:16px;
+    border:0;
+    border-radius:11px;
+    background:#fff;
+    color:#000;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button.secondary{
+    background:#242424;
+    color:#fff;
+}
+
+button.whatsapp{
+    background:#25D366;
+    color:#000;
+}
+
+button.mail{
+    background:#ddd;
+    color:#000;
+}
+
+.status{
+    display:none;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    background:#1d1d1d;
+    line-height:1.5;
+}
+
+.report-box{
+    display:none;
+}
+
+pre{
+    white-space:pre-wrap;
+    word-break:break-word;
+    background:#080808;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #292929;
+    color:#ddd;
+    line-height:1.5;
+}
+
+.small{
+    color:#888;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.history-item{
+    padding:14px 0;
+    border-bottom:1px solid #292929;
+}
+
+.history-item:last-child{
+    border-bottom:0;
+}
+
+.badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:7px;
+    background:#242424;
+    font-size:12px;
+    margin-top:5px;
+}
+
+
+/* ===== BAN SITE — INTERFACE COMPACTE ===== */
+
+.container{
+    width:min(680px,94%);
+    margin:18px auto;
+}
+
+header{
+    margin-bottom:14px;
+}
+
+h1{
+    font-size:27px;
+}
+
+.subtitle{
+    margin-top:4px;
+    font-size:13px;
+}
+
+.card{
+    border-radius:14px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+label{
+    margin:9px 0 5px;
+    font-size:14px;
+}
+
+input,select,textarea{
+    padding:10px;
+    font-size:14px;
+}
+
+textarea{
+    min-height:105px;
+}
+
+button{
+    padding:11px;
+    margin-top:10px;
+    font-size:13px;
+}
+
+#generatedReport{
+    max-height:180px;
+    overflow-y:auto;
+    margin:8px 0;
+    padding:11px;
+    font-size:12px;
+}
+
+.report-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.report-actions button{
+    margin-top:0;
+}
+
+.report-actions .full{
+    grid-column:1 / -1;
+}
+
+.small{
+    font-size:11px;
+}
+
+
+
+/* ===== MESSENGER / BUSINESS ===== */
+
+.account-selector{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:12px;
+}
+
+.account-btn{
+    margin-top:0;
+    padding:12px 8px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.account-btn.active{
+    outline:2px solid currentColor;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>𓆙 BAN SITE</h1>
+    <div class="subtitle">Centre de signalement</div>
+</header>
+
+
+<div class="account-selector">
+
+    <button
+        id="messengerBtn"
+        class="account-btn active"
+        type="button"
+        onclick="selectAccountType('messenger')">
+        📱 Messenger
+    </button>
+
+    <button
+        id="businessBtn"
+        class="account-btn"
+        type="button"
+        onclick="selectAccountType('business')">
+        💼 Business
+    </button>
+
+</div>
+
+<div class="card">
+
+    <label for="target">📱 Numéro / cible</label>
+    <input
+        id="target"
+        type="text"
+        placeholder="+224XXXXXXXXX"
+        autocomplete="off"
+    >
+
+    <label for="type">⚖️ Motif</label>
+    <select id="type">
+        <option value="spam">Spam / messages indésirables</option>
+        <option value="abus">Harcèlement / abus</option>
+        <option value="fraude">Fraude / arnaque</option>
+        <option value="usurpation">Usurpation d'identité</option>
+        <option value="autre">Autre</option>
+    </select>
+
+    <label for="description">📝 Rapport</label>
+    <textarea
+        id="description"
+        placeholder="Explique clairement les faits et indique pourquoi tu signales cette cible..."
+    ></textarea>
+
+    <label for="evidence">📎 Preuve</label>
+    <input
+        id="evidence"
+        type="file"
+        accept="image/*"
+    >
+
+    <div class="small">
+        La preuve sélectionnée reste sur ton appareil.
+        Elle n'est pas automatiquement envoyée par BAN SITE.
+        Tu pourras l'ajouter toi-même au formulaire ou à l'e-mail officiel.
+    </div>
+
+    <button onclick="prepareReport()">
+        🚀 PRÉPARER LE SIGNALEMENT
+    </button>
+
+    <div id="status" class="status"></div>
+
+</div>
+
+
+<div id="reportBox" class="card report-box">
+
+    <h2>📄 Rapport préparé</h2>
+
+    <pre id="generatedReport"></pre>
+
+    <button class="whatsapp" onclick="openWhatsAppContact()">
+        🌐 OUVRIR LE CONTACT OFFICIEL WHATSAPP
+    </button>
+
+    <button class="mail" onclick="openMail()">
+        📧 PRÉPARER L'ENVOI PAR E-MAIL
+    </button>
+
+    <button class="secondary" onclick="openWhatsAppApp()">
+        📱 OUVRIR WHATSAPP — APPLICATION
+    </button>
+
+    <div class="small" style="margin-top:15px">
+        Le canal officiel peut demander des informations ou des preuves
+        supplémentaires. BAN SITE ne prétend pas envoyer directement le
+        signalement à WhatsApp.
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+
+<script>
+
+const API = "http://127.0.0.1:8081";
+
+const OFFICIAL_CONTACT =
+    "https://www." + "whatsapp.com/contact/";
+
+let currentReport = "";
+
+let accountType = "messenger";
+
+const MESSENGER_EMAILS = [
+    "support@support.whatsapp.com",
+    "support@whatsapp.com",
+    "abuse@support.whatsapp.com",
+    "privacy@support.whatsapp.com"
+];
+
+const BUSINESS_EMAILS = [
+    "android_web@support.whatsapp.com",
+    "Smb@support.whatsapp.com",
+    "Accessibility@support.whatsapp.com",
+    "Support@support.whatsapp.com",
+    "Support@whatsapp.com"
+];
+
+
+function selectAccountType(type){
+
+    accountType = type;
+
+    const messengerBtn =
+        document.getElementById("messengerBtn");
+
+    const businessBtn =
+        document.getElementById("businessBtn");
+
+    if(type === "messenger"){
+
+        messengerBtn.classList.add("active");
+        businessBtn.classList.remove("active");
+    }else{
+
+        businessBtn.classList.add("active");
+        messengerBtn.classList.remove("active");
+
+        showStatus(
+            "💼 Mode Business sélectionné."
+        );
+    }
+}
+
+
+
+function showStatus(message){
+
+    const box = document.getElementById("status");
+
+    box.style.display = "block";
+    box.innerHTML = message;
+}
+
+
+function normalizeTarget(value){
+
+    return value
+        .trim()
+        .replace(/[^\d+]/g,"");
+}
+
+
+function prepareReport(){
+
+    const target =
+        normalizeTarget(
+            document.getElementById("target").value
+        );
+
+    const type =
+        document.getElementById("type").value;
+
+    const description =
+        document.getElementById("description").value.trim();
+
+    const evidence =
+        document.getElementById("evidence").files[0];
+
+
+    if(!target){
+
+        showStatus("❌ Veuillez entrer le numéro ou la cible.");
+
+        return;
+    }
+
+
+    if(target.length < 7){
+
+        showStatus("❌ La cible semble trop courte.");
+
+        return;
+    }
+
+
+    if(!description){
+
+        showStatus("❌ Veuillez décrire le motif du signalement.");
+
+        return;
+    }
+
+
+    const labels = {
+
+        spam:"Spam / messages indésirables",
+
+        abus:"Harcèlement / abus",
+
+        fraude:"Fraude / arnaque",
+
+        usurpation:"Usurpation d'identité",
+
+        autre:"Autre"
+
+    };
+
+
+    const date =
+        new Date().toLocaleString("fr-FR");
+
+
+    currentReport =
+`OBJET : Signalement
+
+Numéro / cible :
+${target}
+
+Motif :
+${labels[type] || "Autre"}
+
+Description :
+${description}
+
+Date de préparation :
+${date}
+
+Preuve :
+${evidence ? evidence.name : "Aucune preuve sélectionnée"}
+
+Je souhaite signaler cette cible pour les faits décrits ci-dessus.
+Merci de vérifier la situation conformément à vos règles.`;
+
+
+
+    document.getElementById("generatedReport").textContent =
+        currentReport;
+
+    // Copie automatique du rapport dans le presse-papiers
+    navigator.clipboard.writeText(currentReport)
+        .then(() => {
+            console.log("Rapport automatiquement copié.");
+        })
+        .catch(() => {
+            console.log("Copie automatique non disponible.");
+        });
+
+    document.getElementById("reportBox").style.display =
+        "block";
+
+
+    saveLocalReport(
+        target,
+        type,
+        description
+    );
+
+
+    showStatus(
+        "✅ Rapport préparé.<br><br>" +
+        "Tu peux maintenant le copier puis ouvrir le canal officiel."
+    );
+
+
+    document.getElementById("reportBox")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+}
+
+
+async function copyReport(){
+
+    if(!currentReport){
+
+        showStatus("❌ Aucun rapport préparé.");
+
+        return;
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            currentReport
+        );
+
+        showStatus(
+            "✅ Rapport copié dans le presse-papiers."
+        );
+
+    }catch(error){
+
+        showStatus(
+            "⚠️ Copie automatique impossible. " +
+            "Sélectionne et copie le rapport manuellement."
+        );
+    }
+}
+
+
+function openWhatsAppContact(){
+
+    if(!currentReport){
+
+        showStatus(
+            "❌ Prépare d'abord le rapport."
+        );
+
+        return;
+    }
+
+
+    navigator.clipboard.writeText(
+        currentReport
+    ).catch(()=>{});
+
+
+    window.open(
+        OFFICIAL_CONTACT,
+        "_blank"
+    );
+}
+
+
+function openWhatsAppApp(){
+
+    if(!currentReport){
+
+        showStatus(
+            "❌ Prépare d'abord le rapport."
+        );
+
+        return;
+    }
+
+    // Le rapport reste dans le presse-papiers
+    // afin de pouvoir être collé manuellement dans WhatsApp.
+    navigator.clipboard.writeText(
+        currentReport
+    ).catch(()=>{});
+
+    // Tentative d'ouverture de l'application WhatsApp.
+    window.location.href = "whatsapp://";
+
+    setTimeout(() => {
+
+        showStatus(
+            "📋 Rapport copié. " +
+            "WhatsApp a été ouvert si l'application accepte le lien. " +
+            "Tu peux ensuite coller le rapport."
+        );
+
+    }, 700);
+}
+
+
+function openMail(){
+
+    if(!currentReport){
+
+        showStatus(
+            "❌ Prépare d'abord le rapport."
+        );
+
+        return;
+    }
+
+    const recipients =
+        accountType === "business"
+            ? BUSINESS_EMAILS
+            : MESSENGER_EMAILS;
+
+    const subject =
+        accountType === "business"
+            ? "Signalement WhatsApp Business"
+            : "Signalement WhatsApp";
+
+    const body =
+        currentReport;
+
+    const mailto =
+        "mailto:" +
+        recipients.join(",") +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
+    showStatus(
+        accountType === "business"
+            ? "📧 Rapport Business préparé pour les 5 destinataires."
+            : "📧 Rapport Messenger préparé pour les 4 destinataires."
+    );
+
+    window.location.href = mailto;
+}
+
+async function saveLocalReport(
+    target,
+    type,
+    description
+){
+
+    try{
+
+        const body =
+            new URLSearchParams();
+
+        body.append(
+            "target",
+            target
+        );
+
+        body.append(
+            "type",
+            type
+        );
+
+        body.append(
+            "description",
+            description
+        );
+
+
+        await fetch(
+            API + "/api/report",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                        "application/x-www-form-urlencoded"
+                },
+
+                body:body.toString()
+            }
+        );
+
+
+        loadHistory();
+
+    }catch(error){
+
+        console.log(
+            "Historique local indisponible",
+            error
+        );
+    }
+}
+
+
+async function loadHistory(){
+
+    const history =
+        document.getElementById("history");
+
+
+    try{
+
+        const response =
+            await fetch(
+                API + "/api/history"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(
+            !data.success ||
+            !Array.isArray(data.items)
+        ){
+
+            history.innerHTML =
+                "<p class='small'>Aucun historique.</p>";
+
+            return;
+        }
+
+
+        if(data.items.length === 0){
+
+            history.innerHTML =
+                "<p class='small'>Aucun signalement enregistré.</p>";
+
+            return;
+        }
+
+
+        history.innerHTML =
+            data.items
+                .slice()
+                .reverse()
+                .map(item => {
+
+                    return `
+                    <div class="history-item">
+
+                        <strong>
+                            ${escapeHTML(item.target)}
+                        </strong>
+
+                        <br>
+
+                        <span class="badge">
+                            ${escapeHTML(item.type)}
+                        </span>
+
+                        <div class="small">
+                            ${escapeHTML(item.date || "")}
+                        </div>
+
+                        <div class="small">
+                            Statut :
+                            ${escapeHTML(item.status || "reçu")}
+                        </div>
+
+                    </div>
+                    `;
+
+                })
+                .join("");
+
+
+    }catch(error){
+
+        history.innerHTML =
+            "<p class='small'>API indisponible.</p>";
+    }
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+loadHistory();
+
+</script>
+
+</body>
+</html>

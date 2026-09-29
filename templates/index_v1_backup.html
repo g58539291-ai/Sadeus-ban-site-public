@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>𓆙 BAN SITE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #070707;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: 40px auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #888;
+    margin-top: 8px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #080808;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #777;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #c90000;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+.status {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #181818;
+    text-align: center;
+    color: #aaa;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">𓆙 BAN SITE</div>
+        <div class="subtitle">Outil de signalement</div>
+    </div>
+
+    <div class="card">
+
+        <label for="target">
+            Numéro / identifiant
+        </label>
+
+        <input
+            id="target"
+            type="text"
+            placeholder="Ex : +224..."
+            autocomplete="off"
+        >
+
+        <label for="type">
+            Type de signalement
+        </label>
+
+        <select id="type">
+            <option value="spam">Spam</option>
+            <option value="abus">Abus / harcèlement</option>
+            <option value="fraude">Fraude / arnaque</option>
+            <option value="autre">Autre</option>
+        </select>
+
+        <button onclick="lancer()">
+            LANCER LE SIGNALement
+        </button>
+
+        <div class="status" id="status"></div>
+
+    </div>
+
+    <div class="footer">
+        BAN SITE — Interface web
+    </div>
+
+</div>
+
+<script>
+function lancer() {
+
+    const target = document.getElementById("target").value.trim();
+    const type = document.getElementById("type").value;
+    const status = document.getElementById("status");
+
+    status.style.display = "block";
+
+    if (!target) {
+        status.textContent = "⚠️ Veuillez entrer un numéro ou identifiant.";
+        return;
+    }
+
+    status.textContent = "⏳ Envoi au serveur...";
+
+fetch("http://127.0.0.1:8081/api/report", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+        "target=" + encodeURIComponent(target) +
+        "&type=" + encodeURIComponent(type)
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        status.innerHTML = "✅ <strong>Signalement reçu</strong><br><small>La demande a bien été transmise au serveur.</small>";
+    } else {
+        status.innerHTML = "❌ <strong>Échec</strong><br><small>" + data.message + "</small>";
+    }
+})
+.catch(error => {
+    status.innerHTML = "❌ <strong>Serveur inaccessible</strong><br><small>Vérifiez que l’API est démarrée.</small>";
+    console.error(error);
+});
+
+}
+</script>
+
+</body>
+</html>
