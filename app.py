@@ -2,9 +2,12 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import parse_qs
 import json
 import os
+import secrets
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PORT = int(os.environ.get("PORT", "8080"))
+SITE_PASSWORD = os.environ.get("BAN_SITE_PASSWORD", "")
+SESSION_TOKEN = secrets.token_urlsafe(32)
 
 # Deplexo fournit /data comme espace persistant.
 # En local, on utilise le dossier du projet.
@@ -33,6 +36,81 @@ def save_history(items):
 
 
 class BanSiteHandler(SimpleHTTPRequestHandler):
+
+    def is_authenticated(self):
+        cookie = self.headers.get("Cookie", "")
+        return f"ban_session={SESSION_TOKEN}" in cookie
+
+    def send_login_page(self, error=False):
+        message = "Mot de passe incorrect." if error else ""
+        body = f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAN SITE — Connexion</title>
+<style>
+body {{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b0b0b;
+    color: white;
+    font-family: Arial, sans-serif;
+}}
+.box {{
+    width: min(90%, 380px);
+    padding: 30px;
+    border-radius: 16px;
+    background: #151515;
+    text-align: center;
+    box-sizing: border-box;
+}}
+input {{
+    width: 100%;
+    padding: 14px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+}}
+button {{
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}}
+.error {{
+    color: #ff5555;
+}}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>🔐 BAN SITE</h2>
+<p>Accès protégé</p>
+<form method="POST" action="/login">
+<input type="password" name="password" placeholder="Mot de passe" required>
+<button type="submit">Entrer</button>
+</form>
+<p class="error">{message}</p>
+</div>
+</body>
+</html>"""
+
+        body = body.encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
 
     def send_json(self, data, status=200):
         body = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -70,6 +148,19 @@ class BanSiteHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
 
+        if self.path == "/login":
+            if self.is_authenticated():
+                self.send_response(302)
+                self.send_header("Location", "/")
+                self.end_headers()
+            else:
+                self.send_login_page()
+            return
+
+        if not self.is_authenticated():
+            self.send_login_page()
+            return
+
         if self.path == "/" or self.path == "":
             self.path = "/templates/index.html"
             return super().do_GET()
@@ -97,6 +188,28 @@ class BanSiteHandler(SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def do_POST(self):
+
+        if self.path == "/login":
+            length = int(self.headers.get("Content-Length", 0))
+            raw_data = self.rfile.read(length).decode("utf-8")
+            data = parse_qs(raw_data)
+            password = data.get("password", [""])[0]
+
+            if SITE_PASSWORD and secrets.compare_digest(password, SITE_PASSWORD):
+                self.send_response(302)
+                self.send_header(
+                    "Set-Cookie",
+                    f"ban_session={SESSION_TOKEN}; Path=/; HttpOnly; SameSite=Lax"
+                )
+                self.send_header("Location", "/")
+                self.end_headers()
+            else:
+                self.send_login_page(error=True)
+            return
+
+        if not self.is_authenticated():
+            self.send_login_page()
+            return
 
         if self.path != "/api/report":
             self.send_json({
