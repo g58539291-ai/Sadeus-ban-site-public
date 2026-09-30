@@ -1,5 +1,6 @@
 <html lang="fr">
 <head>
+    <link rel="manifest" href="/static/manifest.json">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>𓆙 BAN SITE</title>
@@ -3686,3 +3687,24 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
+<script>
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+window.addEventListener("appinstalled", () => {
+    console.log("Gojo-wa-ban-app installée");
+});
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/static/sw.js");
+    });
+}
+</script>
