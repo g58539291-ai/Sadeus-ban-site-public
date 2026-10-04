@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sadeus — Supports</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    min-height:100vh;
+    padding:25px 15px;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(120,0,25,.7),transparent 35%),
+      radial-gradient(circle at 80% 70%,rgba(60,0,120,.65),transparent 35%),
+      linear-gradient(135deg,#070007,#1a0008,#05000d);
+}
+.container{max-width:520px;margin:auto}
+h1{font-family:Georgia,serif;font-size:25px;letter-spacing:2px;margin:10px 0 5px}
+.subtitle{font-family:Georgia,serif;font-size:14px;opacity:.85;margin-bottom:25px}
+.account-buttons{display:flex;gap:10px;margin-bottom:22px}
+.account-buttons button{
+    flex:1;padding:13px;border:0;border-radius:12px;
+    color:#fff;background:#35104f;font-weight:bold;
+}
+.account-buttons button.active{box-shadow:0 0 15px #9b39d0}
+.support{
+    margin:10px 0;border:1px solid rgba(180,70,255,.4);
+    border-radius:14px;background:rgba(10,0,20,.78);overflow:hidden;
+}
+.support-title{
+    width:100%;padding:15px;border:0;background:transparent;
+    color:#fff;text-align:left;font-weight:bold;font-size:15px;
+}
+.support-content{display:none;padding:0 15px 16px}
+.support.open .support-content{display:block}
+.email{font-size:12px;opacity:.7;margin-bottom:12px;line-height:1.6}
+.languages{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.language{
+    padding:9px 12px;border:1px solid #7c32a8;border-radius:9px;
+    background:#180c25;color:#fff;
+}
+.language.active{background:#6b2290}
+.inject{
+    display:none;width:100%;margin-top:14px;padding:12px;
+    border:0;border-radius:10px;color:#fff;font-weight:bold;
+    background:linear-gradient(90deg,#7b1230,#401477);
+}
+.support.ready .inject{display:block}
+.motto{
+    margin-top:35px;font-family:Georgia,serif;font-size:14px;
+    line-height:1.6;opacity:.9
+}
+.powered{margin-top:12px;font-size:12px;opacity:.55}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>𝑺𝑨𝑫𝑬𝑼𝑺 𝑺𝒀𝑺𝑻𝑬𝑴</h1>
+<div class="subtitle">𝑪𝑬𝑵𝑻𝑹𝑬 𝑫𝑬 𝑺𝑼𝑷𝑷𝑶𝑹𝑻</div>
+
+<div class="account-buttons">
+<button id="messengerBtn" onclick="selectAccount('Messenger')">Messenger</button>
+<button id="businessBtn" onclick="selectAccount('Business')">Business</button>
+</div>
+
+<div id="supports"></div>
+
+<div class="motto">
+𝑺𝒂𝒅𝒆𝒖𝒔 : 𝑵𝒐𝒖𝒔 𝒔𝒐𝒎𝒎𝒆𝒔 𝒍𝒆𝒔 𝒂𝒓𝒄𝒉𝒊𝒕𝒆𝒄𝒕𝒆𝒔 𝒅𝒆 𝒗𝒐𝒔 𝒅𝒆𝒔𝒕𝒊𝒏𝒔.
+</div>
+
+<div class="powered">Powered by Gojo Sadeus</div>
+
+</div>
+
+<script>
+const number =
+    localStorage.getItem("sadeus_target_number") || "";
+
+let accountType = "Messenger";
+
+const supportAddresses = {
+    Messenger: [
+        "support@support.whatsapp.com",
+        "898943346632395@support.whatsapp.com"
+    ],
+    Business: [
+        "Smb@support.whatsapp.com",
+        "support@support.whatsapp.com"
+    ]
+};
+
+const languages = [
+    ["Français","fr"],
+    ["English","en"],
+    ["العربية","ar"],
+    ["Español","es"],
+    ["Português","pt"]
+];
+
+/*
+ * Chaque élément représente UN support.
+ * Les adresses sont communes aux 8 supports.
+ */
+const supports = [
+    {
+        fr:`Bonjour,
+
+Je vous informe qu'un enfant de 7 ans utiliserait le service WhatsApp avec le numéro +509XXXXXXXX.
+
+Je vous demande de bien vouloir examiner ce compte conformément à vos règles de protection des mineurs et de prendre les mesures appropriées si une violation est constatée.
+
+Contact : +221763731389
+
+Merci.`,
+        en:`Hello,
+
+I am reporting that a 7-year-old child may be using WhatsApp with the number +509XXXXXXXX.
+
+Please review this account under your child-safety policies and take appropriate action if a violation is confirmed.
+
+Contact: +221763731389
+
+Thank you.`,
+        ar:`مرحباً،
+
+أود الإبلاغ عن احتمال استخدام طفل يبلغ من العمر 7 سنوات لخدمة واتساب بالرقم +509XXXXXXXX.
+
+يرجى مراجعة هذا الحساب وفقاً لسياسات حماية الأطفال واتخاذ الإجراء المناسب إذا تم تأكيد وجود مخالفة.
+
+جهة الاتصال: +221763731389
+
+شكراً لكم.`,
+        es:`Hola,
+
+Informo de que un niño de 7 años podría estar utilizando WhatsApp con el número +509XXXXXXXX.
+
+Les solicito que revisen esta cuenta conforme a sus políticas de protección infantil y que tomen las medidas correspondientes si se confirma una infracción.
+
+Contacto: +221763731389
+
+Gracias.`,
+        pt:`Olá,
+
+Informo que uma criança de 7 anos pode estar utilizando o WhatsApp com o número +509XXXXXXXX.
+
+Solicito que analisem esta conta de acordo com as políticas de proteção infantil e tomem as medidas adequadas caso seja confirmada uma violação.
+
+Contacto: +221763731389
+
+Obrigado.`
+    },
+
+    {
+        fr:`Bonjour,
+
+Je souhaite signaler une activité qui semble promouvoir une offre d'investissement présentée comme permettant de gagner rapidement de l'argent.
+
+Le contenu contient notamment des promesses de gains élevés et des invitations à contacter un numéro WhatsApp.
+
+Numéro de contact mentionné : +221763731389
+
+Merci d'examiner ce signalement conformément à vos règles.`,
+        en:`Hello,
+
+I would like to report activity that appears to promote an investment offer presented as a way to make money quickly.
+
+The content includes claims of high earnings and invitations to contact a WhatsApp number.
+
+Contact number mentioned: +221763731389
+
+Please review this report in accordance with your policies.`,
+        ar:`مرحباً،
+
+أرغب في الإبلاغ عن نشاط يبدو أنه يروّج لعرض استثماري يتم تقديمه على أنه وسيلة لتحقيق أرباح سريعة.
+
+يتضمن المحتوى وعوداً بأرباح مرتفعة ودعوات للتواصل عبر رقم واتساب.
+
+رقم الاتصال المذكور: +221763731389
+
+يرجى مراجعة هذا البلاغ وفقاً لسياساتكم.`,
+        es:`Hola,
+
+Quiero denunciar una actividad que parece promocionar una oferta de inversión presentada como una forma de ganar dinero rápidamente.
+
+El contenido incluye promesas de ganancias elevadas e invitaciones a contactar con un número de WhatsApp.
+
+Número de contacto mencionado: +221763731389
+
+Por favor, revisen este reporte conforme a sus políticas.`,
+        pt:`Olá,
+
+Gostaria de denunciar uma atividade que parece promover uma oferta de investimento apresentada como uma forma de ganhar dinheiro rapidamente.
+
+O conteúdo inclui promessas de ganhos elevados e convites para contactar um número do WhatsApp.
+
+Número de contacto mencionado: +221763731389
+
+Por favor, analisem esta denúncia de acordo com as vossas políticas.`
+    },
+
+    {
+        fr:`Bonjour,
+
+Je souhaite signaler un compte pour une activité présumée contraire aux règles de WhatsApp.
+
+Le compte est associé à des contenus et sollicitations potentiellement frauduleux ou abusifs.
+
+Numéro concerné : +221763731389
+
+Merci d'examiner le compte et de déterminer si une violation est constatée.`,
+        en:`Hello,
+
+I would like to report an account for activity that may violate WhatsApp's rules.
+
+The account is associated with potentially fraudulent or abusive content and solicitations.
+
+Number concerned: +221763731389
+
+Please review the account and determine whether a violation has occurred.`,
+        ar:`مرحباً،
+
+أرغب في الإبلاغ عن حساب بسبب نشاط قد يخالف قواعد واتساب.
+
+يرتبط الحساب بمحتوى وطلبات قد تكون احتيالية أو مسيئة.
+
+الرقم المعني: +221763731389
+
+يرجى مراجعة الحساب وتحديد ما إذا كانت هناك مخالفة.`,
+        es:`Hola,
+
+Quiero denunciar una cuenta por una actividad que podría infringir las reglas de WhatsApp.
+
+La cuenta está asociada con contenido y solicitudes potencialmente fraudulentas o abusivas.
+
+Número afectado: +221763731389
+
+Por favor, revisen la cuenta y determinen si existe una infracción.`,
+        pt:`Olá,
+
+Gostaria de denunciar uma conta por uma atividade que pode violar as regras do WhatsApp.
+
+A conta está associada a conteúdo e solicitações potencialmente fraudulentas ou abusivas.
+
+Número envolvido: +221763731389
+
+Por favor, analisem a conta e determinem se existe uma violação.`
+    },
+
+    {
+        fr:`WHATSAPP - RAPPORT
+
+Objet : Signalement d'un compte concernant une activité présumée contraire aux règles de WhatsApp.
+
+Numéro concerné : +221763731389
+
+Date du signalement : 04/09/2026
+
+Motif du signalement :
+Je souhaite signaler ce compte pour une activité qui semble contrevenir aux règles applicables.
+
+Description des faits :
+Des informations concernant une activité présumée impliquant des mineurs ont été observées.
+
+Dates et heures observées :
+03/09/2026 à 16:00
+
+Demande :
+Je transmets ces informations afin que votre équipe puisse examiner le compte et déterminer, conformément à vos procédures, si une violation des règles est constatée.
+
+Nom indiqué :
+Mr Akaza
+
+Adresse e-mail :
+signalement.contact@gmail.com`,
+        en:`WHATSAPP - REPORT
+
+Subject: Report concerning an account for suspected activity contrary to WhatsApp rules.
+
+Number concerned: +221763731389
+
+Report date: 04/09/2026
+
+Reason for report:
+I would like to report this account for activity that appears to violate the applicable rules.
+
+Description of the facts:
+Information concerning suspected activity involving minors has been observed.
+
+Date and time observed:
+03/09/2026 at 16:00
+
+Request:
+I am providing this information so that your team can review the account and determine, in accordance with your procedures, whether a violation has occurred.
+
+Name indicated:
+Mr Akaza
+
+Email:
+signalement.contact@gmail.com`,
+        ar:`تقرير واتساب
+
+الموضوع: الإبلاغ عن حساب بسبب نشاط يُشتبه في مخالفته لقواعد واتساب.
+
+الرقم المعني: +221763731389
+
+تاريخ البلاغ: 04/09/2026
+
+سبب البلاغ:
+أرغب في الإبلاغ عن هذا الحساب بسبب نشاط يبدو أنه يخالف القواعد المعمول بها.
+
+وصف الوقائع:
+تمت ملاحظة معلومات تتعلق بنشاط يُشتبه في ارتباطه بقاصرين.
+
+التاريخ والوقت:
+03/09/2026 الساعة 16:00
+
+الطلب:
+أرسل هذه المعلومات حتى يتمكن فريقكم من مراجعة الحساب وتحديد ما إذا كانت هناك مخالفة وفقاً لإجراءاتكم.
+
+الاسم المذكور:
+Mr Akaza
+
+البريد الإلكتروني:
+signalement.contact@gmail.com`,
+        es:`INFORME DE WHATSAPP
+
+Asunto: Denuncia de una cuenta por actividad presuntamente contraria a las reglas de WhatsApp.
+
+Número afectado: +221763731389
+
+Fecha del informe: 04/09/2026
+
+Motivo:
+Deseo denunciar esta cuenta por una actividad que parece infringir las reglas aplicables.
+
+Descripción:
+Se ha observado información relacionada con una actividad presuntamente vinculada a menores.
+
+Fecha y hora observadas:
+03/09/2026 a las 16:00
+
+Solicitud:
+Envío esta información para que su equipo pueda revisar la cuenta y determinar, conforme a sus procedimientos, si existe una infracción.
+
+Nombre indicado:
+Mr Akaza
+
+Correo electrónico:
+signalement.contact@gmail.com`,
+        pt:`RELATÓRIO DO WHATSAPP
+
+Assunto: Denúncia de uma conta por atividade presumivelmente contrária às regras do WhatsApp.
+
+Número envolvido: +221763731389
+
+Data da denúncia: 04/09/2026
+
+Motivo:
+Gostaria de denunciar esta conta por uma atividade que parece violar as regras aplicáveis.
+
+Descrição:
+Foram observadas informações relacionadas a uma atividade presumivelmente envolvendo menores.
+
+Data e hora observadas:
+03/09/2026 às 16:00
+
+Pedido:
+Envio estas informações para que a sua equipa possa analisar a conta e determinar, de acordo com os seus procedimentos, se houve uma violação.
+
+Nome indicado:
+Mr Akaza
+
+E-mail:
+signalement.contact@gmail.com`
+    },
+
+    {
+        fr:`Bonjour,
+
+Je souhaite signaler un compte pour une activité présumée contraire aux règles de WhatsApp concernant la sécurité des mineurs.
+
+Des informations et éléments potentiellement liés à l'exploitation de mineurs ont été observés.
+
+Merci de procéder à un examen conformément à vos procédures de protection des mineurs.
+
+Nom indiqué : Mr Akaza
+E-mail : signalement.contact@gmail.com`,
+        en:`Hello,
+
+I would like to report an account for suspected activity contrary to WhatsApp rules concerning child safety.
+
+Information and material potentially related to the exploitation of minors has been observed.
+
+Please review the account in accordance with your child-safety procedures.
+
+Name indicated: Mr Akaza
+Email: signalement.contact@gmail.com`,
+        ar:`مرحباً،
+
+أرغب في الإبلاغ عن حساب بسبب نشاط يُشتبه في مخالفته لقواعد واتساب المتعلقة بسلامة القاصرين.
+
+تمت ملاحظة معلومات ومواد قد تكون مرتبطة باستغلال القاصرين.
+
+يرجى مراجعة الحساب وفقاً لإجراءات حماية الأطفال لديكم.
+
+الاسم المذكور: Mr Akaza
+البريد الإلكتروني: signalement.contact@gmail.com`,
+        es:`Hola,
+
+Quiero denunciar una cuenta por una actividad presuntamente contraria a las reglas de WhatsApp relacionadas con la seguridad de los menores.
+
+Se ha observado información y material que podrían estar relacionados con la explotación de menores.
+
+Por favor, revisen la cuenta conforme a sus procedimientos de protección infantil.
+
+Nombre indicado: Mr Akaza
+Correo electrónico: signalement.contact@gmail.com`,
+        pt:`Olá,
+
+Gostaria de denunciar uma conta por atividade presumivelmente contrária às regras do WhatsApp relacionadas à segurança de menores.
+
+Foram observadas informações e materiais que podem estar relacionados à exploração de menores.
+
+Por favor, analisem a conta de acordo com os procedimentos de proteção infantil.
+
+Nome indicado: Mr Akaza
+E-mail: signalement.contact@gmail.com`
+    },
+
+    {
+        fr:`URGENT — SIGNALement concernant la sécurité des mineurs
+
+Bonjour,
+
+Je souhaite signaler un groupe WhatsApp qui semble présenter un risque grave pour la sécurité des mineurs.
+
+Je demande à WhatsApp de vérifier rapidement le compte ou le groupe concerné, de prendre les mesures appropriées pour protéger les personnes potentiellement victimes et de transmettre les informations pertinentes aux autorités compétentes si nécessaire.
+
+Je fais ce signalement de bonne foi afin de contribuer à la protection des mineurs sur la plateforme.`,
+        en:`URGENT — REPORT CONCERNING CHILD SAFETY
+
+Hello,
+
+I would like to report a WhatsApp group that appears to present a serious risk to the safety of minors.
+
+I request that WhatsApp promptly review the relevant account or group, take appropriate measures to protect potential victims, and forward relevant information to the appropriate authorities if necessary.
+
+I am making this report in good faith to contribute to the protection of minors on the platform.`,
+        ar:`عاجل — بلاغ يتعلق بسلامة القاصرين
+
+مرحباً،
+
+أرغب في الإبلاغ عن مجموعة على واتساب تبدو أنها تشكل خطراً جسيماً على سلامة القاصرين.
+
+أطلب من واتساب مراجعة الحساب أو المجموعة المعنية بسرعة، واتخاذ التدابير المناسبة لحماية الضحايا المحتملين وإحالة المعلومات ذات الصلة إلى الجهات المختصة عند الضرورة.
+
+أقدم هذا البلاغ بحسن نية للمساهمة في حماية القاصرين على المنصة.`,
+        es:`URGENTE — INFORME SOBRE LA SEGURIDAD DE MENORES
+
+Hola,
+
+Quiero denunciar un grupo de WhatsApp que parece representar un riesgo grave para la seguridad de menores.
+
+Solicito a WhatsApp que revise rápidamente la cuenta o el grupo correspondiente, adopte las medidas adecuadas para proteger a posibles víctimas y remita la información pertinente a las autoridades competentes si fuera necesario.
+
+Presento este informe de buena fe para contribuir a la protección de los menores en la plataforma.`,
+        pt:`URGENTE — DENÚNCIA RELACIONADA À SEGURANÇA DE MENORES
+
+Olá,
+
+Gostaria de denunciar um grupo do WhatsApp que parece representar um risco grave para a segurança de menores.
+
+Solicito que o WhatsApp analise rapidamente a conta ou o grupo em questão, tome as medidas adequadas para proteger possíveis vítimas e encaminhe as informações relevantes às autoridades competentes, se necessário.
+
+Faço esta denúncia de boa-fé para contribuir para a proteção de menores na plataforma.`
+    },
+
+    {
+        fr:`WHATSAPP - RAPPORT
+
+Objet : Signalement d'un compte concernant une activité présumée contraire aux règles de WhatsApp.
+
+Numéro concerné : +221763731389
+
+Date du signalement : 04/09/2026
+
+Motif du signalement :
+
+Je souhaite signaler ce compte pour une activité qui semble contrevenir aux règles applicables.
+
+Description des faits :
+
+Des informations concernant une activité présumée impliquant des mineurs ont été observées.
+
+Dates et heures observées :
+
+03/09/2026 à 16:00
+
+Demande :
+
+Je transmets ces informations afin que votre équipe puisse examiner le compte et déterminer, conformément à vos procédures, si une violation des règles est constatée.
+
+Nom indiqué :
+Mr Akaza
+
+Adresse e-mail :
+signalement.contact@gmail.com`,
+        en:`WHATSAPP - REPORT
+
+Subject: Report concerning an account for suspected activity contrary to WhatsApp rules.
+
+Number concerned: +221763731389
+
+Report date: 04/09/2026
+
+Reason for report:
+
+I would like to report this account for activity that appears to violate the applicable rules.
+
+Description of the facts:
+
+Information concerning suspected activity involving minors has been observed.
+
+Date and time observed:
+
+03/09/2026 at 16:00
+
+Request:
+
+I am providing this information so that your team can review the account and determine, in accordance with your procedures, whether a violation has occurred.
+
+Name indicated:
+Mr Akaza
+
+Email:
+signalement.contact@gmail.com`,
+        ar:`تقرير واتساب
+
+الموضوع: الإبلاغ عن حساب بسبب نشاط يُشتبه في مخالفته لقواعد واتساب.
+
+الرقم المعني: +221763731389
+
+تاريخ البلاغ: 04/09/2026
+
+سبب البلاغ:
+
+أرغب في الإبلاغ عن هذا الحساب بسبب نشاط يبدو أنه يخالف القواعد المعمول بها.
+
+وصف الوقائع:
+
+تمت ملاحظة معلومات تتعلق بنشاط يُشتبه في ارتباطه بقاصرين.
+
+التاريخ والوقت:
+
+03/09/2026 الساعة 16:00
+
+الطلب:
+
+أرسل هذه المعلومات حتى يتمكن فريقكم من مراجعة الحساب وتحديد ما إذا كانت هناك مخالفة وفقاً لإجراءاتكم.
+
+الاسم المذكور:
+Mr Akaza
+
+البريد الإلكتروني:
+signalement.contact@gmail.com`,
+        es:`INFORME DE WHATSAPP
+
+Asunto: Denuncia de una cuenta por actividad presuntamente contraria a las reglas de WhatsApp.
+
+Número afectado: +221763731389
+
+Fecha del informe: 04/09/2026
+
+Motivo:
+
+Deseo denunciar esta cuenta por una actividad que parece infringir las reglas aplicables.
+
+Descripción:
+
+Se ha observado información relacionada con una actividad presuntamente vinculada a menores.
+
+Fecha y hora:
+
+03/09/2026 a las 16:00
+
+Solicitud:
+
+Envío esta información para que su equipo pueda revisar la cuenta y determinar, conforme a sus procedimientos, si existe una infracción.
+
+Nombre indicado:
+Mr Akaza
+
+Correo electrónico:
+signalement.contact@gmail.com`,
+        pt:`RELATÓRIO DO WHATSAPP
+
+Assunto: Denúncia de uma conta por atividade presumivelmente contrária às regras do WhatsApp.
+
+Número envolvido: +221763731389
+
+Data da denúncia: 04/09/2026
+
+Motivo:
+
+Gostaria de denunciar esta conta por uma atividade que parece violar as regras aplicáveis.
+
+Descrição:
+
+Foram observadas informações relacionadas a uma atividade presumivelmente envolvendo menores.
+
+Data e hora:
+
+03/09/2026 às 16:00
+
+Pedido:
+
+Envio estas informações para que a sua equipa possa analisar a conta e determinar, de acordo com os seus procedimentos, se houve uma violação.
+
+Nome indicado:
+Mr Akaza
+
+E-mail:
+signalement.contact@gmail.com`
+    },
+
+    {
+        fr:`Bonjour,
+
+Je souhaite signaler un contenu qui semble promouvoir un service de casino en ligne et inviter les utilisateurs à effectuer des dépôts d'argent.
+
+Le contenu mentionne notamment un dépôt minimum, des gains potentiels et un lien vers un service externe.
+
+Merci d'examiner ce contenu conformément aux règles applicables.
+
+Lien mentionné : https://rushpayapp.in/`,
+        en:`Hello,
+
+I would like to report content that appears to promote an online casino service and invite users to make monetary deposits.
+
+The content mentions a minimum deposit, potential winnings, and a link to an external service.
+
+Please review this content in accordance with the applicable rules.
+
+Link mentioned: https://rushpayapp.in/`,
+        ar:`مرحباً،
+
+أرغب في الإبلاغ عن محتوى يبدو أنه يروّج لخدمة كازينو عبر الإنترنت ويدعو المستخدمين إلى إيداع الأموال.
+
+يتضمن المحتوى ذكراً لإيداع أدنى وأرباح محتملة ورابطاً إلى خدمة خارجية.
+
+يرجى مراجعة هذا المحتوى وفقاً للقواعد المعمول بها.
+
+الرابط المذكور: https://rushpayapp.in/`,
+        es:`Hola,
+
+Quiero denunciar un contenido que parece promocionar un servicio de casino en línea e invitar a los usuarios a realizar depósitos de dinero.
+
+El contenido menciona un depósito mínimo, posibles ganancias y un enlace a un servicio externo.
+
+Por favor, revisen este contenido conforme a las reglas aplicables.
+
+Enlace mencionado: https://rushpayapp.in/`,
+        pt:`Olá,
+
+Gostaria de denunciar um conteúdo que parece promover um serviço de casino online e convidar os utilizadores a fazer depósitos de dinheiro.
+
+O conteúdo menciona um depósito mínimo, possíveis ganhos e um link para um serviço externo.
+
+Por favor, analisem este conteúdo de acordo com as regras aplicáveis.
+
+Link mencionado: https://rushpayapp.in/`
+    }
+];
+
+const subjects = {
+    fr:"Signalement concernant un compte WhatsApp",
+    en:"Report regarding a WhatsApp account",
+    ar:"بلاغ يتعلق بحساب على واتساب",
+    es:"Reporte relacionado con una cuenta de WhatsApp",
+    pt:"Denúncia relacionada com uma conta WhatsApp"
+};
+
+function selectAccount(type){
+    accountType = type;
+
+    document.getElementById("messengerBtn")
+        .classList.toggle("active",type==="Messenger");
+
+    document.getElementById("businessBtn")
+        .classList.toggle("active",type==="Business");
+
+    createSupports();
+}
+
+function createSupports(){
+    const container = document.getElementById("supports");
+    container.innerHTML = "";
+
+    supports.forEach((item,index)=>{
+        const support = document.createElement("div");
+        support.className = "support";
+
+        const emailText = supportAddresses[accountType].join(" • ");
+
+        support.innerHTML = `
+            <button class="support-title"
+                onclick="openSupport(${index})">
+                Support ${index + 1}
+            </button>
+
+            <div class="support-content">
+                <div class="email">${emailText}</div>
+
+                <div class="languages">
+                    ${languages.map(lang=>`
+                        <button class="language"
+                            onclick="chooseLanguage(this,'${lang[1]}',${index})">
+                            ${lang[0]}
+                        </button>
+                    `).join("")}
+                </div>
+
+                <button class="inject"
+                    onclick="openGmail(${index})">
+                    Injection du venin
+                </button>
+            </div>
+        `;
+
+        container.appendChild(support);
+    });
+}
+
+function openSupport(index){
+    const all = document.querySelectorAll(".support");
+
+    all.forEach((item,i)=>{
+        if(i !== index){
+            item.classList.remove("open");
+            item.classList.remove("ready");
+        }
+    });
+
+    all[index].classList.toggle("open");
+}
+
+function chooseLanguage(button,language,index){
+    const support = document.querySelectorAll(".support")[index];
+
+    support.querySelectorAll(".language")
+        .forEach(btn=>btn.classList.remove("active"));
+
+    button.classList.add("active");
+    support.dataset.language = language;
+    support.classList.add("ready");
+}
+
+function openGmail(index) {
+    const account = accountType;
+    const language = selectedLanguage[index] || "fr";
+    const target = localStorage.getItem("sadeus_target_number") || "";
+
+    const recipients = supportAddresses[account].join(",");
+
+    const subjects = {
+        fr: "Signalement concernant un compte WhatsApp",
+        en: "Report regarding a WhatsApp account",
+        ar: "بلاغ يتعلق بحساب على واتساب",
+        es: "Reporte relacionado con una cuenta de WhatsApp",
+        pt: "Denúncia relacionada com uma conta WhatsApp"
+    };
+
+    let body = supports[index][language] || supports[index].fr;
+    body = body.replace(/\+509XXXXXXXX/g, target);
+
+    const subject = subjects[language] || subjects.fr;
+
+    const gmailIntent =
+        "intent:#Intent;" +
+        "action=android.intent.action.SENDTO;" +
+        "scheme=mailto;" +
+        "to=" + encodeURIComponent(recipients) + ";" +
+        "subject=" + encodeURIComponent(subject) + ";" +
+        "body=" + encodeURIComponent(body) + ";" +
+        "package=com.google.android.gm;" +
+        "end";
+
+    window.location.href = gmailIntent;
+}
+
+selectAccount("Messenger");
+</script>
+
+</body>
+</html>
