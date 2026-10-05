@@ -1,3961 +1,957 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="manifest" href="/static/manifest.json">
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>𓆙 BAN SITE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadeus</title>
 
 <style>
 *{
     box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    background:
-        radial-gradient(circle at 15% 35%, rgba(255,20,55,.42), transparent 38%),
-        radial-gradient(circle at 85% 35%, rgba(30,70,255,.42), transparent 38%),
-        radial-gradient(circle at 50% 70%, rgba(150,25,255,.24), transparent 42%),
-        linear-gradient(135deg,#050207,#070912,#03040a);
-    background-size:160% 160%;
-    background-position:0% 50%;
-    color:#fff;
-    font-family:Arial,sans-serif;
-    animation:sadeusBackground 14s ease-in-out infinite alternate;
-}
-
-@keyframes sadeusBackground{
-    0%{
-        background-position:0% 50%;
-    }
-    50%{
-        background-position:100% 45%;
-    }
-    100%{
-        background-position:20% 60%;
-    }
-}
-
-.container{
-    width:min(700px,92%);
-    margin:35px auto;
-}
-
-header{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-h1{
-    margin:0;
-    font-size:32px;
-}
-
-.subtitle{
-    color:#aaa;
-    margin-top:8px;
-}
-
-.card{
-    background:#121212;
-    border:1px solid #292929;
-    border-radius:18px;
-    padding:22px;
-    margin-bottom:18px;
-}
-
-label{
-    display:block;
-    margin:15px 0 7px;
-    font-weight:bold;
-}
-
-input,select,textarea{
-    width:100%;
-    padding:13px;
-    border-radius:10px;
-    border:1px solid #333;
-    background:#0b0b0b;
-    color:#fff;
-    outline:none;
-    font-size:15px;
-}
-
-textarea{
-    min-height:150px;
-    resize:vertical;
-}
-
-button{
-    width:100%;
-    padding:14px;
-    margin-top:16px;
-    border:0;
-    border-radius:11px;
-    background:#fff;
-    color:#000;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-}
-
-button.secondary{
-    background:#242424;
-    color:#fff;
-}
-
-button.whatsapp{
-    background:#25D366;
-    color:#000;
-}
-
-button.mail{
-    background:#ddd;
-    color:#000;
-}
-
-.status{
-    display:none;
-    padding:15px;
-    margin-top:15px;
-    border-radius:10px;
-    background:#1d1d1d;
-    line-height:1.5;
-}
-
-.report-box{
-    display:block;
-}
-
-pre{
-    white-space:pre-wrap;
-    word-break:break-word;
-    background:#080808;
-    padding:15px;
-    border-radius:10px;
-    border:1px solid #292929;
-    color:#ddd;
-    line-height:1.5;
-}
-
-.small{
-    color:#888;
-    font-size:13px;
-    line-height:1.5;
-}
-
-.history-item{
-    padding:14px 0;
-    border-bottom:1px solid #292929;
-}
-
-.history-item:last-child{
-    border-bottom:0;
-}
-
-.badge{
-    display:inline-block;
-    padding:4px 8px;
-    border-radius:7px;
-    background:#242424;
-    font-size:12px;
-    margin-top:5px;
-}
-
-
-/* ===== BAN SITE — INTERFACE COMPACTE ===== */
-
-.container{
-    width:min(680px,94%);
-    margin:18px auto;
-}
-
-header{
-    margin-bottom:14px;
-}
-
-h1{
-    font-size:27px;
-}
-
-.subtitle{
-    margin-top:4px;
-    font-size:13px;
-}
-
-.card{
-    border-radius:14px;
-    padding:15px;
-    margin-bottom:12px;
-}
-
-label{
-    margin:9px 0 5px;
-    font-size:14px;
-}
-
-input,select,textarea{
-    padding:10px;
-    font-size:14px;
-}
-
-textarea{
-    min-height:105px;
-}
-
-button{
-    padding:11px;
-    margin-top:10px;
-    font-size:13px;
-}
-
-#generatedReport{
-    max-height:180px;
-    overflow-y:auto;
-    margin:8px 0;
-    padding:11px;
-    font-size:12px;
-}
-
-.report-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-.report-actions button{
-    margin-top:0;
-}
-
-.report-actions .full{
-    grid-column:1 / -1;
-}
-
-.small{
-    font-size:11px;
-}
-
-
-
-/* ===== MESSENGER / BUSINESS ===== */
-
-.account-selector{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-bottom:12px;
-}
-
-.account-btn{
-    margin-top:0;
-    padding:12px 8px;
-    border-radius:12px;
-    font-size:13px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.account-btn.active{
-    outline:2px solid currentColor;
-}
-
-
-/* ===== BAN SITE — FINITION INTERFACE ===== */
-
-.account-selector{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-bottom:14px;
-}
-
-.account-btn{
-    margin:0;
-    padding:12px 8px;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:12px;
-    font-size:13px;
-    font-weight:700;
-    cursor:pointer;
-    transition:
-        transform .15s ease,
-        opacity .15s ease,
-        box-shadow .15s ease;
-}
-
-.account-btn:active{
-    transform:scale(.98);
-}
-
-.account-btn.active{
-    box-shadow:0 0 0 2px currentColor;
-}
-
-.card{
-    transition:
-        transform .15s ease,
-        box-shadow .15s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    box-shadow:0 0 0 2px rgba(255,255,255,.18);
-}
-
-.field-error{
-    box-shadow:0 0 0 2px rgba(255,70,70,.65) !important;
-}
-
-.preparing{
-    opacity:.7;
-    pointer-events:none;
-}
-
-.report-box{
-    animation:reportAppear .25s ease;
-}
-
-@keyframes reportAppear{
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-
-
-/* ===== GOJO SADEUS — IDENTITÉ VISUELLE ===== */
-
-body{
-    background:
-        radial-gradient(circle at 8% 35%, rgba(255,20,55,.65), transparent 38%),
-        radial-gradient(circle at 92% 35%, rgba(25,70,255,.65), transparent 38%),
-        radial-gradient(circle at 50% 52%, rgba(150,20,255,.34), transparent 36%),
-        linear-gradient(135deg,#050107 0%,#080612 50%,#02040b 100%);
-    background-size:160% 160%;
-    color:#f4f6ff;
-    position:relative;
-    overflow-x:hidden;
-    animation:sadeusBackground 12s ease-in-out infinite alternate;
-}
-
-/* Aura rouge + bleue */
-body::before{
-    content:"";
-    position:fixed;
-    inset:-25%;
-    pointer-events:none;
-    z-index:-1;
-    background:
-        radial-gradient(circle at 18% 50%, rgba(255,0,55,.38), transparent 32%),
-        radial-gradient(circle at 82% 50%, rgba(0,65,255,.38), transparent 32%),
-        radial-gradient(circle at 50% 50%, rgba(170,20,255,.20), transparent 30%);
-    filter:blur(28px);
-    animation:sadeusAura 9s ease-in-out infinite alternate;
-}
-
-@keyframes sadeusBackground{
-    0%{
-        background-position:0% 50%;
-    }
-    50%{
-        background-position:100% 45%;
-    }
-    100%{
-        background-position:20% 60%;
-    }
-}
-
-@keyframes sadeusAura{
-    0%{
-        transform:translateX(-4%) scale(1);
-    }
-    50%{
-        transform:translateX(4%) translateY(-2%) scale(1.08);
-    }
-    100%{
-        transform:translateX(-2%) translateY(3%) scale(1.04);
-    }
-}
-
-/* Identité Sadeus discrète */
-body::after{
-    content:"𓆙  SADEUS 𓆙";
-    position:fixed;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%) rotate(-18deg);
-    font-size:clamp(55px,16vw,150px);
-    font-weight:900;
-    letter-spacing:12px;
-    color:rgba(255,255,255,.018);
-    white-space:nowrap;
-    pointer-events:none;
-    z-index:-1;
-}
-
-/* Titre */
-header h1{
-    text-shadow:
-        0 0 8px rgba(80,100,255,.65),
-        0 0 25px rgba(90,70,255,.35);
-}
-
-.subtitle{
-    color:#9ca8ff;
-    letter-spacing:2px;
-}
-
-/* Cartes */
-.card{
-    background:rgba(10,12,22,.78);
-    border:1px solid rgba(120,135,255,.20);
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.45),
-        0 0 25px rgba(60,75,255,.08);
-    backdrop-filter:blur(12px);
-}
-
-/* Sélecteur Messenger / Business */
-.account-selector{
-    background:rgba(8,10,18,.72);
-    border:1px solid rgba(120,135,255,.18);
-    box-shadow:0 0 25px rgba(60,75,255,.08);
-    backdrop-filter:blur(10px);
-}
-
-.account-btn{
-    font-family:Arial,sans-serif;
-    font-weight:700;
-    letter-spacing:1.2px;
-    text-transform:uppercase;
-    transition:.25s ease;
-    border:1px solid rgba(255,255,255,.12);
-    color:#fff;
-}
-
-.account-btn:hover{
-    transform:translateY(-1px);
-    box-shadow:0 0 18px rgba(80,100,255,.25);
-}
-
-.account-btn.active{
-    box-shadow:
-        0 0 15px rgba(80,100,255,.35),
-        inset 0 0 15px rgba(80,100,255,.08);
-}
-
-/* Champs */
-input,
-select,
-textarea{
-    background:rgba(3,5,12,.72);
-    border-color:rgba(120,135,255,.20);
-    color:#f4f6ff;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:rgba(105,125,255,.75);
-    box-shadow:0 0 14px rgba(75,95,255,.18);
-}
-
-/* Bouton principal */
-button{
-    transition:.25s ease;
-}
-
-button:hover{
-    transform:translateY(-1px);
-}
-
-/* Petite signature */
-
-
-.sadeus-header.page-hidden{display:none !important;}\n
-/* ===== FOOTER PAGE 1 ===== */
-
-.page1-footer{
-    margin-top:28px;
-    padding-top:18px;
-    text-align:center;
-}
-
-.page1-footer-warning{
-    margin-bottom:10px;
-    color:rgba(235,230,245,.58);
-    font-size:10px;
-    line-height:1.5;
-}
-
-.page1-footer-powered{
-    margin-top:18px;
-    padding-top:14px;
-    border-top:1px solid rgba(255,255,255,.06);
-    text-align:center;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.4px;
-}
-
-
-/* ===== SADEUS HEADER — IDENTITÉ + STATUT ===== */
-
-.sadeus-header{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    gap:16px !important;
-    text-align:left !important;
-}
-
-.sadeus-header-left{
-    min-width:0;
-}
-
-.system-status{
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    gap:7px;
-    padding:8px 12px;
-    border:1px solid rgba(120,255,170,.18);
-    border-radius:999px;
-    background:rgba(80,255,150,.045);
-    color:rgba(180,255,205,.78);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.7px;
-    user-select:none;
-    pointer-events:none;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#69ff9a;
-    box-shadow:
-        0 0 5px rgba(105,255,154,.9),
-        0 0 12px rgba(105,255,154,.55);
-    animation:sadeusOnlinePulse 1.8s ease-in-out infinite;
-}
-
-@keyframes sadeusOnlinePulse{
-    0%,100%{
-        opacity:.65;
-        transform:scale(.9);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.08);
-    }
-}
-
-@media (max-width:480px){
-    .sadeus-header{
-        gap:10px !important;
-    }
-
-    .system-status{
-        padding:7px 9px;
-        font-size:9px;
-    }
-
-    .status-dot{
-        width:6px;
-        height:6px;
-    }
-}
-
-
-/* ===== GOJO CHECK — ACCÈS SECONDAIRE ===== */
-
-.gojo-check-link{
-    margin-top:12px;
-    width:100%;
-    min-height:58px;
-    padding:11px 14px;
-    display:flex;
-    align-items:center;
-    gap:11px;
-    text-decoration:none;
-    color:#fff;
-    border:1px solid rgba(98,217,255,.22);
-    border-radius:12px;
-    background:linear-gradient(
-        135deg,
-        rgba(77,124,255,.09),
-        rgba(139,92,255,.09)
-    );
-    box-shadow:inset 0 0 18px rgba(77,124,255,.025);
-    transition:.2s ease;
-}
-
-.gojo-check-link:hover{
-    border-color:rgba(98,217,255,.48);
-    box-shadow:
-        0 0 18px rgba(77,124,255,.12),
-        inset 0 0 18px rgba(139,92,255,.04);
-    transform:translateY(-1px);
-}
-
-.gojo-check-link > span{
-    font-size:20px;
-    color:#62d9ff;
-    text-shadow:0 0 10px rgba(98,217,255,.5);
-}
-
-.gojo-check-link strong{
-    font-size:13px;
-    letter-spacing:1.2px;
-}
-
-.gojo-check-link small{
-    margin-left:auto;
-    font-size:9px;
-    letter-spacing:.8px;
-    opacity:.55;
-}
-
-.gojo-check-link b{
-    font-size:18px;
-    color:#8b5cff;
-}
-
-</style>
-
-<style>
-/* ===== SADEUS — TYPOGRAPHIE PREMIUM ===== */
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-header h1{
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:800;
-    letter-spacing:2px;
-}
-
-header::after{
-    content:"𓆙𝗚𝗢𝗝𝗢 𝗦𝗔𝗗𝗘𝗨𝗦 𝗫𝗜";
-    display:block;
-    margin-top:10px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:700;
-    font-size:12px;
-    letter-spacing:1.8px;
-    color:rgba(220,225,255,.82);
-    text-shadow:
-        0 0 8px rgba(150,60,255,.35),
-        0 0 18px rgba(60,90,255,.18);
-}
-
-/* ===== BOUTONS COMPTE ===== */
-
-.account-btn{
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    transition:.25s ease;
-    border:1px solid rgba(255,255,255,.12);
-    color:#fff;
-}
-
-/* MESSENGER — ROUGE */
-
-#messengerBtn{
-    background:rgba(220,25,55,.16);
-    border-color:rgba(255,35,65,.45);
-}
-
-#messengerBtn:hover{
-    background:rgba(235,25,55,.28);
-    box-shadow:0 0 20px rgba(255,25,55,.30);
-    transform:translateY(-1px);
-}
-
-#messengerBtn.active{
-    background:linear-gradient(
-        135deg,
-        rgba(255,25,55,.55),
-        rgba(150,10,35,.38)
-    );
-    border-color:rgba(255,65,85,.80);
-    box-shadow:
-        0 0 20px rgba(255,20,50,.40),
-        inset 0 0 18px rgba(255,30,60,.12);
-}
-
-/* BUSINESS — BLEU */
-
-#businessBtn{
-    background:rgba(25,70,220,.16);
-    border-color:rgba(45,100,255,.45);
-}
-
-#businessBtn:hover{
-    background:rgba(30,75,240,.28);
-    box-shadow:0 0 20px rgba(30,80,255,.30);
-    transform:translateY(-1px);
-}
-
-#businessBtn.active{
-    background:linear-gradient(
-        135deg,
-        rgba(30,80,255,.55),
-        rgba(20,35,150,.38)
-    );
-    border-color:rgba(65,115,255,.80);
-    box-shadow:
-        0 0 20px rgba(30,80,255,.40),
-        inset 0 0 18px rgba(35,80,255,.12);
-}
-
-/* ===== ELEMENTS COMMUNS — VIOLET ===== */
-
-button:not(#messengerBtn):not(#businessBtn){
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:700;
-    letter-spacing:.8px;
-}
-
-input,
-select,
-textarea{
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-label{
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:700;
-    letter-spacing:.4px;
-}
-</style>
-
-
-<style>
-/* ===== TYPOGRAPHIE DES BOUTONS SADEUS ===== */
-
-.account-btn,
-#messengerBtn,
-#businessBtn,
-button{
-    font-family:"Trebuchet MS", Arial, sans-serif !important;
-    font-weight:800 !important;
-    font-size:14px !important;
-    letter-spacing:1.2px !important;
-    text-transform:uppercase !important;
-}
-
-/* Messenger */
-#messengerBtn{
-    background:rgba(220,25,55,.16) !important;
-    border-color:rgba(255,35,65,.45) !important;
-}
-
-#messengerBtn.active{
-    background:linear-gradient(
-        135deg,
-        rgba(255,25,55,.58),
-        rgba(150,10,35,.40)
-    ) !important;
-}
-
-/* Business */
-#businessBtn{
-    background:rgba(25,70,220,.16) !important;
-    border-color:rgba(45,100,255,.45) !important;
-}
-
-#businessBtn.active{
-    background:linear-gradient(
-        135deg,
-        rgba(30,80,255,.58),
-        rgba(20,35,150,.40)
-    ) !important;
-}
-
-/* Boutons communs */
-button:not(#messengerBtn):not(#businessBtn){
-    font-family:"Trebuchet MS", Arial, sans-serif !important;
-    font-weight:800 !important;
-}
-</style>
-
-
-<style>
-/* =====================================================
-   SADEUS — SELECTEUR DE COMPTE
-   ===================================================== */
-
-.account-selector{
-    display:flex !important;
-    gap:10px !important;
-    padding:6px !important;
-    background:rgba(5,7,16,.72) !important;
-    border:1px solid rgba(150,80,255,.22) !important;
-    border-radius:16px !important;
-    box-shadow:
-        0 0 25px rgba(100,30,255,.12),
-        inset 0 0 20px rgba(80,40,180,.05) !important;
-}
-
-/* BASE DES DEUX BOUTONS */
-.account-btn{
-    flex:1 !important;
-    min-height:50px !important;
-    border-radius:12px !important;
-    font-family:"Trebuchet MS",Arial,sans-serif !important;
-    font-size:14px !important;
-    font-weight:800 !important;
-    letter-spacing:1.2px !important;
-    text-transform:uppercase !important;
-    color:#fff !important;
-    cursor:pointer !important;
-    transition:
-        transform .22s ease,
-        background .22s ease,
-        border-color .22s ease,
-        box-shadow .22s ease !important;
-}
-
-/* =====================================================
-   MESSENGER — ROUGE
-   ===================================================== */
-
-#messengerBtn{
-    background:linear-gradient(
-        135deg,
-        rgba(255,25,60,.20),
-        rgba(100,5,30,.20)
-    ) !important;
-
-    border:1px solid rgba(255,45,75,.48) !important;
-
-    box-shadow:
-        inset 0 0 18px rgba(255,20,55,.05) !important;
-}
-
-#messengerBtn:hover{
-    background:linear-gradient(
-        135deg,
-        rgba(255,35,70,.34),
-        rgba(130,8,40,.30)
-    ) !important;
-
-    border-color:rgba(255,70,95,.75) !important;
-
-    box-shadow:
-        0 0 20px rgba(255,25,60,.28),
-        inset 0 0 18px rgba(255,30,60,.10) !important;
-
-    transform:translateY(-2px) !important;
-}
-
-#messengerBtn.active{
-    background:linear-gradient(
-        135deg,
-        rgba(255,35,70,.72),
-        rgba(145,8,40,.58)
-    ) !important;
-
-    border-color:rgba(255,100,120,.95) !important;
-
-    box-shadow:
-        0 0 25px rgba(255,25,60,.48),
-        0 0 55px rgba(255,10,45,.16),
-        inset 0 0 20px rgba(255,100,120,.12) !important;
-}
-
-/* =====================================================
-   BUSINESS — BLEU
-   ===================================================== */
-
-#businessBtn{
-    background:linear-gradient(
-        135deg,
-        rgba(25,75,255,.20),
-        rgba(15,25,110,.20)
-    ) !important;
-
-    border:1px solid rgba(50,110,255,.48) !important;
-
-    box-shadow:
-        inset 0 0 18px rgba(30,80,255,.05) !important;
-}
-
-#businessBtn:hover{
-    background:linear-gradient(
-        135deg,
-        rgba(35,90,255,.34),
-        rgba(15,35,145,.30)
-    ) !important;
-
-    border-color:rgba(80,135,255,.78) !important;
-
-    box-shadow:
-        0 0 20px rgba(30,90,255,.30),
-        inset 0 0 18px rgba(35,90,255,.10) !important;
-
-    transform:translateY(-2px) !important;
-}
-
-#businessBtn.active{
-    background:linear-gradient(
-        135deg,
-        rgba(35,90,255,.72),
-        rgba(15,35,155,.58)
-    ) !important;
-
-    border-color:rgba(100,150,255,.95) !important;
-
-    box-shadow:
-        0 0 25px rgba(30,80,255,.50),
-        0 0 55px rgba(20,60,255,.16),
-        inset 0 0 20px rgba(100,150,255,.12) !important;
-}
-
-/* EFFET AU TOUCHER SUR MOBILE */
-.account-btn:active{
-    transform:scale(.97) !important;
-}
-
-/* PETITS ÉCRANS */
-@media (max-width:480px){
-    .account-selector{
-        gap:8px !important;
-        padding:5px !important;
-    }
-
-    .account-btn{
-        min-height:48px !important;
-        font-size:13px !important;
-        letter-spacing:1px !important;
-    }
-}
-</style>
-
-
-<style>
-/* =====================================================
-   SADEUS — CHAMPS DU FORMULAIRE
-   ===================================================== */
-
-input,
-select,
-textarea{
-    width:100% !important;
-    box-sizing:border-box !important;
-    background:rgba(5,7,16,.82) !important;
-    color:#f5f7ff !important;
-    border:1px solid rgba(145,105,255,.28) !important;
-    border-radius:12px !important;
-    font-family:"Trebuchet MS",Arial,sans-serif !important;
-    font-size:14px !important;
-    transition:
-        border-color .22s ease,
-        box-shadow .22s ease,
-        background .22s ease !important;
-}
-
-input,
-select{
-    min-height:46px !important;
-    padding:0 14px !important;
-}
-
-textarea{
-    min-height:125px !important;
-    padding:13px 14px !important;
-    resize:vertical !important;
-    line-height:1.5 !important;
-}
-
-input::placeholder,
-textarea::placeholder{
-    color:rgba(205,210,235,.45) !important;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none !important;
-    background:rgba(7,8,20,.94) !important;
-    border-color:rgba(165,100,255,.75) !important;
-    box-shadow:
-        0 0 0 2px rgba(130,60,255,.08),
-        0 0 20px rgba(125,55,255,.18) !important;
-}
-
-/* LABELS */
-
-label{
-    display:block !important;
-    margin-bottom:8px !important;
-    color:rgba(240,242,255,.92) !important;
-    font-family:"Trebuchet MS",Arial,sans-serif !important;
-    font-size:14px !important;
-    font-weight:800 !important;
-    letter-spacing:.5px !important;
-}
-
-/* ESPACEMENT ENTRE LES BLOCS */
-
-label + input,
-label + select,
-label + textarea{
-    margin-bottom:18px !important;
-}
-</style>
-
-
-<style>
-/* =====================================================
-   SADEUS — BOUTON PRINCIPAL
-   ===================================================== */
-
-button[onclick="prepareReport()"]{
-    width:100% !important;
-    min-height:54px !important;
-    margin-top:8px !important;
-    padding:0 20px !important;
-
-    background:linear-gradient(
-        135deg,
-        rgba(145,45,255,.82),
-        rgba(75,35,190,.82)
-    ) !important;
-
-    border:1px solid rgba(195,135,255,.85) !important;
-    border-radius:14px !important;
-
-    color:#fff !important;
-    font-family:"Trebuchet MS",Arial,sans-serif !important;
-    font-size:14px !important;
-    font-weight:900 !important;
-    letter-spacing:1.4px !important;
-    text-transform:uppercase !important;
-
-    cursor:pointer !important;
-
-    box-shadow:
-        0 0 18px rgba(135,45,255,.32),
-        0 0 45px rgba(105,35,255,.12),
-        inset 0 0 18px rgba(255,255,255,.08) !important;
-
-    transition:
-        transform .22s ease,
-        box-shadow .22s ease,
-        background .22s ease !important;
-}
-
-button[onclick="prepareReport()"]:hover{
-    background:linear-gradient(
-        135deg,
-        rgba(170,55,255,.92),
-        rgba(90,40,215,.92)
-    ) !important;
-
-    border-color:rgba(220,175,255,.98) !important;
-
-    box-shadow:
-        0 0 25px rgba(155,55,255,.48),
-        0 0 65px rgba(115,35,255,.20),
-        inset 0 0 20px rgba(255,255,255,.10) !important;
-
-    transform:translateY(-2px) !important;
-}
-
-button[onclick="prepareReport()"]:active{
-    transform:scale(.98) !important;
-
-    box-shadow:
-        0 0 18px rgba(145,45,255,.40),
-        inset 0 0 22px rgba(255,255,255,.12) !important;
-}
-</style>
-
-
-<style>
-/* =====================================================
-   SADEUS — HEADER
-   ===================================================== */
-
-header{
-    position:relative !important;
-    padding:28px 18px 22px !important;
-    text-align:center !important;
-}
-
-header h1{
-    margin:0 !important;
-    font-family:"Trebuchet MS",Arial,sans-serif !important;
-    font-size:30px !important;
-    font-weight:900 !important;
-    letter-spacing:4px !important;
-    color:#ffffff !important;
-    text-shadow:
-        0 0 12px rgba(150,70,255,.40),
-        0 0 30px rgba(80,70,255,.16) !important;
-}
-
-header::after{
-    content:"𓆙𝗚𝗢𝗝𝗢 𝗦𝗔𝗗𝗘𝗨𝗦 𝗫𝗜" !important;
-    display:block !important;
-    margin-top:10px !important;
-    font-family:Arial,sans-serif !important;
-    font-size:12px !important;
-    font-weight:700 !important;
-    letter-spacing:1.5px !important;
-    color:rgba(220,225,255,.82) !important;
-    text-shadow:
-        0 0 8px rgba(160,60,255,.40),
-        0 0 18px rgba(70,90,255,.18) !important;
-}
-
-/* Ligne lumineuse sous l'identité */
-header::before{
-    content:"" !important;
-    display:block !important;
-    width:70px !important;
-    height:2px !important;
-    margin:13px auto 0 !important;
-    border-radius:10px !important;
-    background:linear-gradient(
-        90deg,
-        rgba(255,35,70,.75),
-        rgba(170,55,255,.95),
-        rgba(40,100,255,.75)
-    ) !important;
-    box-shadow:
-        0 0 10px rgba(150,50,255,.45),
-        0 0 22px rgba(100,50,255,.18) !important;
-}
-
-
-/* ===== SONG — LIGNE NUMÉRO / CIBLE ===== */
-.target-label-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-}
-
-.target-label-row > label{
-    margin:9px 0 5px !important;
-}
-
-.target-song{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:5px;
     margin:0;
     padding:0;
-    background:transparent;
-    border:0;
-    width:auto;
-    box-shadow:none;
 }
 
-.target-song span{
-    font-size:11px;
-    font-weight:800;
-    white-space:nowrap;
+html,body{
+    width:100%;
+    min-height:100%;
+    background:#090000;
+    color:#fff;
+    font-family:Georgia,"Times New Roman",serif;
 }
 
-.target-song button{
-    width:25px !important;
-    height:25px !important;
-    min-height:25px !important;
-    padding:0 !important;
-    margin:0 !important;
-    border-radius:50%;
-    font-size:12px;
+body{
+    overflow:hidden;
+}
+
+.page{
+    min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-}
-<style>
-/* =====================================================
-   SADEUS — CONTENEUR PRINCIPAL
-   ===================================================== */
-
-main,
-.container,
-.card,
-.panel,
-.form-container{
-    position:relative !important;
+    position:relative;
+    overflow:hidden;
 }
 
-/* Conteneurs existants avec fond */
-main{
-    background:rgba(4,6,14,.52) !important;
-    border:1px solid rgba(150,90,255,.16) !important;
-    border-radius:20px !important;
+.page::before{
+    content:"";
+    position:absolute;
+    width:150vw;
+    height:150vw;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+        rgba(120,0,0,.32) 0%,
+        rgba(60,0,0,.22) 35%,
+        transparent 70%);
+    animation:aura 7s ease-in-out infinite alternate;
+}
+
+@keyframes aura{
+    from{transform:scale(.95);}
+    to{transform:scale(1.08);}
+}
+
+.hero{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:520px;
+    min-height:100vh;
+    padding:35px 22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.serpent-globe{
+    width: min(82vw, 430px);
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* GLOBE */
+
+.globe-wrap{
+    position:relative;
+    width:255px;
+    height:255px;
+    margin-bottom:28px;
+}
+
+.globe{
+    position:absolute;
+    inset:12px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 35% 28%,
+            #8f1b1b 0%,
+            #5c0b0b 28%,
+            #260303 58%,
+            #070000 100%);
+    border:1px solid rgba(255,80,80,.65);
     box-shadow:
-        0 0 35px rgba(65,35,180,.10),
-        inset 0 0 35px rgba(80,40,180,.035) !important;
-    backdrop-filter:blur(14px) !important;
-    -webkit-backdrop-filter:blur(14px) !important;
+        0 0 25px rgba(170,0,0,.85),
+        0 0 55px rgba(100,0,0,.45),
+        inset -25px -20px 40px rgba(0,0,0,.92),
+        inset 12px 10px 30px rgba(255,40,40,.22);
+    overflow:hidden;
 }
 
-/* Champs et sections restent lisibles au-dessus du fond */
-form{
-    position:relative !important;
-    z-index:1 !important;
+.globe-map{
+    position:absolute;
+    inset:-7%;
+    background-image:
+        linear-gradient(
+            rgba(100,0,0,.38),
+            rgba(100,0,0,.38)
+        ),
+        url("/static/world-map.svg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:.82;
+    filter:
+        brightness(.72)
+        sepia(1)
+        saturate(5)
+        hue-rotate(315deg)
+        contrast(1.35);
+    transform:scale(1.12);
 }
 
-/* Séparation visuelle des sections */
-form > div,
-form > section{
-    border-color:rgba(145,90,255,.14) !important;
+.globe::before,
+.globe::after{
+    content:"";
+    position:absolute;
+    z-index:3;
+    border:1px solid rgba(255,100,100,.18);
+    border-radius:50%;
+    pointer-events:none;
 }
 
-/* Petit halo derrière le formulaire */
-main::before{
-    content:"" !important;
-    position:absolute !important;
-    inset:8% 12% !important;
-    background:radial-gradient(
-        circle,
-        rgba(130,45,255,.08),
-        transparent 65%
-    ) !important;
-    filter:blur(25px) !important;
-    pointer-events:none !important;
-    z-index:-1 !important;
+.globe::before{
+    width:170%;
+    height:55%;
+    left:-35%;
+    top:23%;
 }
 
-/* Mobile */
-@media (max-width:480px){
-    main{
-        border-radius:16px !important;
-        margin-left:10px !important;
-        margin-right:10px !important;
-        box-shadow:
-            0 0 25px rgba(65,35,180,.10),
-            inset 0 0 25px rgba(80,40,180,.035) !important;
+.globe::after{
+    width:55%;
+    height:170%;
+    left:23%;
+    top:-35%;
+}
+
+/* lignes du globe */
+.globe::before,
+.globe::after{
+    content:"";
+    position:absolute;
+    border:1px solid rgba(255,80,80,.16);
+    border-radius:50%;
+}
+
+.globe::before{
+    width:170%;
+    height:55%;
+    left:-35%;
+    top:23%;
+}
+
+.globe::after{
+    width:55%;
+    height:170%;
+    left:23%;
+    top:-35%;
+}
+
+/* continents stylisés */
+.land{
+    position:absolute;
+    opacity:.28;
+    filter:blur(.3px);
+}
+
+.land.one{
+    width:85px;
+    height:48px;
+    background:#8d2020;
+    border-radius:55% 30% 60% 35%;
+    top:55px;
+    left:48px;
+    transform:rotate(-18deg);
+}
+
+.land.two{
+    width:70px;
+    height:95px;
+    background:#721313;
+    border-radius:35% 60% 40% 55%;
+    top:105px;
+    right:45px;
+    transform:rotate(25deg);
+}
+
+.land.three{
+    width:50px;
+    height:38px;
+    background:#9b2424;
+    border-radius:50%;
+    bottom:40px;
+    left:80px;
+}
+
+/* serpent */
+.snake{
+    position:absolute;
+    z-index:5;
+    top:17px;
+    left:12px;
+    width:235px;
+    font-size:108px;
+    line-height:1;
+    transform:rotate(-16deg);
+    text-shadow:
+        0 0 7px #ff2020,
+        0 0 18px rgba(150,0,0,.9),
+        0 0 35px rgba(255,0,0,.35);
+    pointer-events:none;
+}
+
+.crown{
+    font-size:28px;
+    margin-bottom:8px;
+    text-shadow:0 0 12px rgba(255,50,50,.55);
+}
+
+h1{
+    font-size:43px;
+    letter-spacing:7px;
+    margin-bottom:14px;
+    text-shadow:
+        0 0 10px rgba(255,0,0,.75),
+        0 0 28px rgba(130,0,0,.6);
+}
+
+.motto{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:21px;
+    margin-bottom:32px;
+}
+
+.main-button{
+    display:inline-block;
+    padding:15px 27px;
+    border:1px solid rgba(255,100,100,.42);
+    border-radius:10px;
+    color:#fff;
+    text-decoration:none;
+    background:linear-gradient(
+        135deg,
+        rgba(110,0,0,.75),
+        rgba(35,0,0,.9)
+    );
+    box-shadow:
+        0 0 18px rgba(160,0,0,.35),
+        inset 0 0 12px rgba(255,0,0,.08);
+}
+
+.bottom-motto{
+    margin-top:27px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:17px;
+    opacity:.92;
+}
+
+@media(max-width:380px){
+    .globe-wrap{
+        width:220px;
+        height:220px;
+    }
+
+    .snake{
+        width:205px;
+        font-size:92px;
+    }
+
+    h1{
+        font-size:37px;
+    }
+
+    .motto{
+        font-size:18px;
     }
 }
-</style>
 
+/* =========================
+   PAGE 2 — SIGNALEMENT
+   ========================= */
+
+#reportPage{
+    display:none;
+    min-height:100vh;
+    position:relative;
+    overflow-y:auto;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(130,0,0,.25),transparent 30%),
+        radial-gradient(circle at 85% 75%,rgba(50,0,0,.30),transparent 35%),
+        #090000;
+}
+
+.report-container{
+    position:relative;
+    z-index:2;
+    width:min(92%,520px);
+    min-height:100vh;
+    margin:auto;
+    padding:25px 20px 30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+/* Chaîne Sadeus */
+.channel-link{
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    margin-bottom:24px;
+    text-shadow:0 0 10px rgba(180,0,0,.45);
+}
+
+/* Header */
+.report-header{
+    width:100%;
+    padding:18px 12px;
+    border:1px solid rgba(255,70,70,.28);
+    border-radius:12px;
+    background:rgba(30,0,0,.55);
+    box-shadow:
+        0 0 20px rgba(130,0,0,.20),
+        inset 0 0 15px rgba(255,0,0,.04);
+    margin-bottom:18px;
+}
+
+.report-header-top{
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+.report-header-main{
+    margin-top:5px;
+    font-size:24px;
+    letter-spacing:3px;
+}
+
+/* Sadeus Sound */
+.sound-button{
+    padding:11px 22px;
+    margin-bottom:22px;
+    border:1px solid rgba(255,80,80,.32);
+    border-radius:10px;
+    color:#fff;
+    background:rgba(80,0,0,.65);
+    font-family:inherit;
+    cursor:pointer;
+}
+.sound-player{
+    position:relative;
+    display:inline-block;
+    margin-bottom:22px;
+}
+
+.song-menu{
+    display:none;
+    position:absolute;
+    z-index:1000;
+    left:50%;
+    transform:translateX(-50%);
+    top:calc(100% + 8px);
+    width:min(310px,90vw);
+    max-height:340px;
+    overflow-y:auto;
+    padding:10px;
+    border:1px solid rgba(120,70,255,.45);
+    border-radius:14px;
+    background:rgba(10,0,20,.96);
+    box-shadow:0 0 25px rgba(120,0,255,.18);
+}
+
+.song-menu.open{
+    display:block;
+}
+
+.song-title{
+    text-align:center;
+    color:#fff;
+    font-weight:700;
+    padding:8px 4px 12px;
+}
+
+.song-option{
+    display:block;
+    width:100%;
+    margin:5px 0;
+    padding:9px 10px;
+    border:1px solid rgba(255,80,80,.22);
+    border-radius:9px;
+    background:rgba(40,0,40,.8);
+    color:#fff;
+    font-family:inherit;
+    text-align:left;
+    cursor:pointer;
+}
+
+.song-option:hover,
+.song-option.active{
+    background:rgba(110,0,90,.75);
+    border-color:rgba(120,80,255,.6);
+}
+
+.song-controls{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding-top:10px;
+}
+
+.song-controls button{
+    width:42px;
+    height:36px;
+    border:1px solid rgba(255,80,80,.3);
+    border-radius:8px;
+    color:#fff;
+    background:rgba(80,0,0,.7);
+    cursor:pointer;
+}
+
+/* Messenger / Business */
+.account-buttons{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:22px;
+}
+
+.account-button{
+    padding:14px 10px;
+    border:1px solid rgba(255,255,255,.20);
+    border-radius:10px;
+    color:#fff;
+    background:rgba(35,0,0,.65);
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.account-button.active{
+    background:linear-gradient(
+        135deg,
+        rgba(150,0,0,.72),
+        rgba(60,0,0,.82)
+    );
+    border-color:rgba(255,80,80,.45);
+}
+
+/* Numéro */
+.number-label{
+    width:100%;
+    text-align:left;
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.number-input{
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid rgba(255,80,80,.25);
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    font-family:inherit;
+    font-size:16px;
+    outline:none;
+    margin-bottom:22px;
+}
+
+.number-input::placeholder{
+    color:rgba(255,255,255,.48);
+}
+
+/* Injecter le venin */
+.venom-button{
+    width:100%;
+    padding:16px;
+    border:1px solid rgba(255,70,70,.42);
+    border-radius:11px;
+    color:#fff;
+    background:linear-gradient(
+        135deg,
+        rgba(145,0,0,.85),
+        rgba(55,0,0,.95)
+    );
+    font-family:inherit;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(150,0,0,.25);
+}
+
+.report-quote{
+    margin-top:28px;
+    font-size:16px;
+    line-height:1.5;
+    opacity:.9;
+}
+
+.powered{
+    margin-top:auto;
+    padding-top:45px;
+    font-size:14px;
+    opacity:.65;
+}
+
+@media(max-width:380px){
+    .report-container{
+        padding-left:15px;
+        padding-right:15px;
+    }
+}
+
+
+
+}
+
+.giant-snake{
+    transform-origin:center;
+}
+
+
+@keyframes snakeCrawl{
+    0%{
+        transform:translate(-5px,65px) rotate(-20deg);
+    }
+    20%{
+        transform:translate(25px,25px) rotate(18deg);
+    }
+    40%{
+        transform:translate(75px,65px) rotate(-12deg);
+    }
+    60%{
+        transform:translate(115px,105px) rotate(20deg);
+    }
+    80%{
+        transform:translate(55px,145px) rotate(-18deg);
+    }
+    100%{
+        transform:translate(-5px,65px) rotate(-20deg);
+    }
+}
+
+.giant-snake{
+    position:absolute;
+    z-index:6;
+    width:360px;
+    height:360px;
+    left:50%;
+    top:50%;
+    margin-left:-180px;
+    margin-top:-180px;
+
+    font-size:185px;
+    line-height:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transform-origin:center;
+
+    filter:
+        saturate(1.7)
+        contrast(1.15)
+        drop-shadow(0 4px 7px rgba(0,0,0,.95))
+        drop-shadow(0 0 18px rgba(160,0,0,.65));
+
+    animation:giantSnakeAround 52s ease-in-out infinite;
+    pointer-events:none;
+}
+
+@keyframes giantSnakeAround{
+
+    0%{
+        transform:
+            translate(-65px,-25px)
+            rotate(-35deg)
+            scale(1.15);
+    }
+
+    12%{
+        transform:
+            translate(55px,-70px)
+            rotate(15deg)
+            scale(1.18);
+    }
+
+    25%{
+        transform:
+            translate(105px,0)
+            rotate(70deg)
+            scale(1.2);
+    }
+
+    38%{
+        transform:
+            translate(65px,75px)
+            rotate(125deg)
+            scale(1.18);
+    }
+
+    50%{
+        transform:
+            translate(-15px,105px)
+            rotate(175deg)
+            scale(1.2);
+    }
+
+    63%{
+        transform:
+            translate(-100px,55px)
+            rotate(225deg)
+            scale(1.18);
+    }
+
+    76%{
+        transform:
+            translate(-110px,-45px)
+            rotate(275deg)
+            scale(1.2);
+    }
+
+    89%{
+        transform:
+            translate(-45px,-100px)
+            rotate(325deg)
+            scale(1.18);
+    }
+
+    100%{
+        transform:
+            translate(-65px,-25px)
+            rotate(345deg)
+            scale(1.15);
+    }
+}
+
+@media(max-width:380px){
+    .giant-snake{
+        width:310px;
+        height:310px;
+        margin-left:-155px;
+        margin-top:-155px;
+        font-size:155px;
+    }
+}
+
+.back-report-button{
+    display:block !important;
+    position:relative;
+    z-index:9999;
+    width:max-content;
+    margin:0 auto 18px;
+    padding:10px 18px;
+    border:1px solid rgba(180,70,255,.5);
+    border-radius:10px;
+    background:rgba(40,0,60,.95);
+    color:#fff;
+    font-family:Georgia,serif;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-    
-    <header class="sadeus-header">
+<div class="page">
+    <main class="hero">
 
-    <div class="sadeus-header-left">
-        <div class="sadeus-eyebrow">SADEUS SYSTEM</div>
+        <div class="globe-wrap">
+    <img src="/static/serpent-globe.png" class="serpent-globe" alt="Serpent autour de la Terre">
+</div>
+        <div class="crown">♛</div>
 
-        <h1>BAN SITE</h1>
+        <h1>SADEUS</h1>
 
-        <div class="subtitle">
-            CENTRE DE SIGNALEMENT
+        <div class="motto">
+            𓆙𝑫𝑶𝑴𝑰𝑵𝑶𝑵𝑺 𝑳𝑬 𝑴𝑶𝑵𝑫𝑬 👑
         </div>
-    </div>
 
-    <div class="system-status" aria-hidden="true">
-        <span class="status-dot"></span>
-        <span>EN LIGNE</span>
-    </div>
+        <a href="#" class="main-button" onclick="showReport();return false;">
+            Accéder au signalement
+        </a>
 
-</header>
+        <div class="bottom-motto">
+            𓆙 𝗦𝗔𝗗𝗘𝗨𝗦 : 𝗪𝗘 𝗪𝗘𝗥𝗘 𝗕𝗢𝗥𝗡 𝗧𝗢 𝗥𝗘𝗜𝗚𝗡 👑
+        </div>
 
-
-<div class="account-selector">
-
-    <button
-        id="messengerBtn"
-        class="account-btn active"
-        type="button"
-        onclick="selectAccountType('messenger')">
-
-        <span class="account-icon">◈</span>
-        <span>Messenger</span>
-
-    </button>
-
-    <button
-        id="businessBtn"
-        class="account-btn"
-        type="button"
-        onclick="selectAccountType('business')">
-
-        <span class="account-icon">◇</span>
-        <span>Business</span>
-
-    </button>
-
+    </main>
 </div>
 
 
-<div class="card sadeus-form-card">
+<!-- =========================
+     PAGE 2 — SIGNALEMENT
+     ========================= -->
 
-    <div class="card-heading">
+<div id="reportPage">
 
-        <span class="card-symbol">𓆙</span>
+    <main class="report-container">
+<button
+    type="button"
+    onclick="backToHome()"
+    style="display:block !important; position:relative; z-index:999999; margin:0 auto 20px; padding:10px 18px; border:1px solid rgba(180,70,255,.5); border-radius:10px; background:rgba(40,0,60,.95); color:#fff; font-family:Georgia,serif; font-weight:bold; cursor:pointer;">
+    ↩ 𝑹𝑬𝑻𝑶𝑼𝑹
+</button>
 
-        <div>
-            <div class="card-title">
-                PRÉPARER UN SIGNALEMENT
+        <a href="#" class="channel-link">
+            Suivre la chaîne 📽️𝑪𝑶𝑼𝑳𝑶𝑰𝑹 𝑺𝑨𝑫𝑬𝑼𝑺ⁱⁿ
+        </a>
+
+        <div class="report-header">
+            <div class="report-header-top">
+                𝑺𝑨𝑫𝑬𝑼𝑺 𝑺𝒀𝑺𝑻𝑬𝑴
             </div>
-
-            <div class="card-description">
-                Décris les faits avec précision.
+            <div class="report-header-main">
+                𝑪𝑬𝑵𝑻𝑹𝑬 𝑫𝑬 𝑺𝑰𝑮𝑵𝑨𝑳𝑬𝑴𝑬𝑵𝑻
             </div>
         </div>
 
+            𓆙 𝐒𝐎𝐍𝐆
+</button>
+<div class="sound-player">
+
+    <button type="button" class="sound-button" id="soundButton">
+        𓆙 𝐒𝐎𝐍𝐆
+    </button>
+
+    <div class="song-menu" id="songMenu">
+        <div class="song-title">𓆙 SADEUS MUSIC</div>
+
+               <button class="song-option" data-track="0">GOJO RAP — INFINI DOMINANT</button>
+        <button class="song-option" data-track="1">INFINI DIVIN</button>
+        <button class="song-option" data-track="2">Satoru Gojo — Bug du Système</button>
+        <button class="song-option" data-track="3">GOJO INFINI — Chaque Combat est Déjà Fini</button>
+        <div class="song-controls">
+            <button type="button" id="prevSong">⏮</button>
+            <button type="button" id="pauseSong">⏯</button>
+            <button type="button" id="nextSong">⏭</button>
+        </div>
     </div>
 
+</div>
 
-<div class="field-group">
+<audio id="sadeusSong" preload="auto"></audio>
 
-    <div class="target-label-row">
-        <label for="target">NUMÉRO / CIBLE</label>
+        <div class="account-buttons">
 
-        <div class="sadeus-audio target-song">
-            <button id="audioToggle" type="button" aria-label="Activer ou couper la musique">
-                🔇
+            <button
+                type="button"
+                class="account-button active"
+                data-account="messenger">
+                Messenger
             </button>
 
-            <span>𓆙𝐒𝐎𝐍𝐆</span>
+            <button
+                type="button"
+                class="account-button"
+                data-account="business">
+                Business
+            </button>
 
-            <audio id="sadeusAudio" loop preload="none">
-                <source src="/static/audio/instrumental.m4a" type="audio/mp4">
-            </audio>
         </div>
-    </div>
 
-    <input
-        id="target"
-        type="text"
-        placeholder="+224XXXXXXXXX"
-        autocomplete="off"
-    >
+        <label class="number-label" for="targetNumber">
+            Numéro à signaler
+        </label>
 
-</div>           
+        <input
+            id="targetNumber"
+            class="number-input"
+            type="tel"
+            placeholder="Entrez le numéro à signaler"
+            autocomplete="off">
 
-<div class="report-types">
+        <button
+            type="button"
+            class="venom-button"
+            onclick="goToSupports()">
+            𝑰𝑵𝑱𝑬𝑪𝑻𝑬𝑹 𝑳𝑬 𝑽𝑬𝑵𝑰𝑵
+        </button>
 
-    <div class="types-title">
-        CHOISIR LE TYPE DE SIGNALEMENT
-    </div>
+        <div class="report-quote">
+            𓆙 𝗦𝗔𝗗𝗘𝗨𝗦 : 𝗡𝗢𝗨𝗦 𝗠𝗘𝗧𝗧𝗢𝗡𝗦 𝗘𝗡 𝗣𝗟𝗔𝗖𝗘 𝗟𝗘𝗦 𝗟𝗢𝗜𝗦 𝗤𝗨𝗜 𝗥É𝗚𝗜𝗦𝗦𝗘𝗡𝗧 𝗖𝗘 𝗠𝗢𝗡𝗗𝗘. 👑
+        </div>
 
-    <button type="button" class="report-type-btn" data-type="spam">
-        <span>🔴</span>
-        <strong>SPAM</strong>
-        <b>→</b>
-    </button>
+        <div class="powered">
+            Powered by Gojo Sadeus
+        </div>
 
-    <button type="button" class="report-type-btn" data-type="abus">
-        <span>🟠</span>
-        <strong>ABUS / HARCÈLEMENT</strong>
-        <b>→</b>
-    </button>
-
-    <button type="button" class="report-type-btn" data-type="fraude">
-        <span>🟡</span>
-        <strong>FRAUDE / ARNAQUE</strong>
-        <b>→</b>
-    </button>
-
-    <button type="button" class="report-type-btn" data-type="usurpation">
-        <span>🟣</span>
-        <strong>USURPATION D'IDENTITÉ</strong>
-        <b>→</b>
-    </button>
-
-    <button type="button" class="report-type-btn" data-type="autre">
-        <span>⚪</span>
-        <strong>AUTRE</strong>
-        <b>→</b>
-    </button>
+    </main>
 
 </div>
-
-
-
-
-
-
-<div class="page1-footer">
-    <div class="page1-footer-warning">
-        VEUILLEZ NE PAS TROP PARTAGER LE SITE POUR PRÉSERVER UNE UTILISATION DURABLE ET EFFICACE.
-    </div>
-
-    <div class="page1-footer-warning">
-        À NE PAS UTILISER SEULEMENT DANS UN CADRE ÉDUCATIF 🤧, DE FUCK TOUT CE QUI BOUGE!!!
-    </div>
-
-    <div class="page1-footer-powered">
-        𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐆𝐎𝐉𝐎 𝐒𝐀𝐃𝐄𝐔𝐒 𝐗𝐈
-    </div>
-</div>
-
-</div>
-
-<style>
-/* ===== SADEUS — FINITION HEADER + SELECTEUR ===== */
-
-header{
-    padding:22px 16px 14px;
-}
-
-header h1{
-    font-family:"Trebuchet MS",Arial,sans-serif;
-    font-size:29px;
-    font-weight:900;
-    letter-spacing:3px;
-    text-shadow:0 0 12px rgba(170,60,255,.35);
-}
-
-.account-selector{
-    gap:10px;
-}
-
-.account-btn{
-    flex:1;
-    min-height:52px !important;
-
-    display:flex !important;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-
-    padding:0 12px !important;
-
-    border:1px solid rgba(170,150,255,.12) !important;
-    border-radius:12px !important;
-
-    background:rgba(255,255,255,.025) !important;
-
-    color:rgba(220,220,245,.55) !important;
-
-    font-size:11px !important;
-    font-weight:800 !important;
-    letter-spacing:1.4px !important;
-
-    transition:
-        background .2s ease,
-        color .2s ease,
-        border .2s ease,
-        box-shadow .2s ease,
-        transform .2s ease !important;
-}
-
-.account-btn:hover{
-    transform:translateY(-1px);
-    color:#fff !important;
-    border-color:rgba(160,100,255,.35) !important;
-    background:rgba(120,70,255,.08) !important;
-}
-
-.account-btn.active{
-    color:#fff !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(115,50,255,.28),
-            rgba(55,65,190,.18)
-        ) !important;
-
-    border-color:rgba(170,120,255,.48) !important;
-
-    box-shadow:
-        0 0 20px rgba(110,55,255,.14),
-        inset 0 1px 0 rgba(255,255,255,.08);
-}
-
-.account-icon{
-    font-size:14px;
-    opacity:.9;
-}
-
-#messengerBtn{
-    background:rgba(210,20,55,.16);
-    border-color:rgba(255,40,70,.55);
-    color:#ff6b82;
-}
-
-#messengerBtn.active{
-    background:rgba(220,25,55,.82);
-    color:#fff;
-    box-shadow:0 0 0 2px rgba(255,60,85,.28),
-               0 0 18px rgba(255,20,55,.28);
-}
-
-#businessBtn{
-    background:rgba(25,65,220,.16);
-    border-color:rgba(55,95,255,.55);
-    color:#79a0ff;
-}
-
-#businessBtn.active{
-    background:rgba(35,75,220,.82);
-    color:#fff;
-    box-shadow:0 0 0 2px rgba(70,110,255,.28),
-               0 0 18px rgba(25,70,255,.28);
-}
-/* =====================================================
-   GOJO SADEUS XI — INTERFACE PRINCIPALE
-   ===================================================== */
-
-.sadeus-header{
-    position:relative;
-    padding:34px 18px 26px !important;
-    text-align:center;
-}
-
-.sadeus-mark{
-    width:58px;
-    height:58px;
-    margin:0 auto 12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid rgba(170,80,255,.45);
-    border-radius:18px;
-    background:radial-gradient(circle,rgba(170,50,255,.25),rgba(10,5,25,.85));
-    color:#fff;
-    font-size:31px;
-    box-shadow:0 0 20px rgba(150,50,255,.25),inset 0 0 18px rgba(130,40,255,.08);
-}
-
-.sadeus-eyebrow{
-    margin-bottom:7px;
-    color:rgba(190,195,230,.55);
-    font-family:"Trebuchet MS",Arial,sans-serif;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:4px;
-}
-
-.sadeus-header h1{
-    margin:0 !important;
-    font-size:32px !important;
-    font-weight:900 !important;
-    letter-spacing:5px !important;
-    color:#fff !important;
-    text-shadow:0 0 10px rgba(100,110,255,.55),0 0 30px rgba(150,50,255,.25) !important;
-}
-
-.sadeus-name{
-    margin-top:7px;
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:2px;
-    color:rgba(225,225,255,.88);
-}
-
-.sadeus-line{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    width:150px;
-    margin:14px auto 10px;
-}
-
-.sadeus-line span{
-    height:1px;
-    flex:1;
-    background:linear-gradient(90deg,transparent,rgba(145,70,255,.75));
-}
-
-.sadeus-line span:last-child{
-    background:linear-gradient(90deg,rgba(145,70,255,.75),transparent);
-}
-
-.sadeus-line b{
-    color:#a866ff;
-    font-size:9px;
-    text-shadow:0 0 10px rgba(150,60,255,.8);
-}
-
-.sadeus-header .subtitle{
-    margin:0;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:2.5px;
-    color:rgba(180,190,225,.55);
-}
-
-
-.sadeus-powered{
-    margin-top:12px;
-    text-align:center;
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:1.2px;
-    color:rgba(190,195,220,.48);
-}
-
-.sadeus-powered b{
-    color:rgba(220,215,255,.82);
-    font-weight:800;
-}
-
-/* SELECTEUR */
-
-.account-selector{
-    position:relative;
-    display:flex !important;
-    gap:9px !important;
-    margin:0 0 16px !important;
-    padding:5px !important;
-    background:rgba(5,6,15,.78) !important;
-    border:1px solid rgba(140,90,255,.18) !important;
-    border-radius:15px !important;
-    box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 20px rgba(100,50,200,.04);
-}
-
-.account-btn{
-    min-height:50px !important;
-    display:flex !important;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    border-radius:11px !important;
-    font-size:12px !important;
-    letter-spacing:1.5px !important;
-}
-
-.account-icon{
-    font-size:13px;
-    opacity:.9;
-}
-
-
-/* CARTE */
-
-.sadeus-form-card{
-    position:relative;
-    overflow:hidden;
-
-    margin-top:4px !important;
-    padding:24px !important;
-
-    border:1px solid rgba(155,110,255,.18) !important;
-    border-radius:22px !important;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,16,38,.88),
-            rgba(7,8,19,.94)
-        ) !important;
-
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.32),
-        0 0 35px rgba(100,45,220,.08),
-        inset 0 1px 0 rgba(255,255,255,.06) !important;
-
-    backdrop-filter:blur(18px);
-}
-
-.sadeus-form-card::before{
-    content:"";
-    position:absolute;
-
-    top:-90px;
-    right:-90px;
-
-    width:210px;
-    height:210px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(125,65,255,.16),
-            transparent 68%
-        );
-
-    pointer-events:none;
-}
-
-.sadeus-form-card::after{
-    content:"";
-    position:absolute;
-
-    bottom:-100px;
-    left:-100px;
-
-    width:220px;
-    height:220px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(35,75,255,.09),
-            transparent 68%
-        );
-
-    pointer-events:none;
-}
-
-.sadeus-form-card::before{
-    content:"";
-    position:absolute;
-    top:-80px;
-    right:-80px;
-    width:180px;
-    height:180px;
-    background:radial-gradient(circle,rgba(110,70,255,.13),transparent 68%);
-    pointer-events:none;
-}
-
-.card-heading{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:22px;
-}
-
-.card-symbol{
-    width:38px;
-    height:38px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex:none;
-    border-radius:11px;
-    background:rgba(130,60,255,.10);
-    border:1px solid rgba(150,90,255,.20);
-    color:#c38aff;
-    font-size:19px;
-}
-
-.card-title{
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:1.5px;
-    color:#fff;
-}
-
-.card-description{
-    margin-top:4px;
-    font-size:10px;
-    color:rgba(190,195,220,.48);
-}
-
-
-/* CHAMPS */
-
-.field-group{
-    position:relative;
-    margin-bottom:16px;
-}
-
-.field-group label{
-    display:block;
-    margin-bottom:8px;
-
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1.5px;
-
-    color:rgba(205,195,235,.62);
-}
-
-.field-group input,
-.field-group select,
-.field-group textarea{
-    width:100%;
-    box-sizing:border-box;
-
-    border:1px solid rgba(155,120,220,.18);
-    border-radius:12px;
-
-    background:rgba(5,5,16,.72);
-    color:#f4f1ff;
-
-    outline:none;
-
-    transition:
-        border-color .2s ease,
-        box-shadow .2s ease,
-        background .2s ease;
-}
-
-.field-group input,
-.field-group select{
-    min-height:48px;
-    padding:0 14px;
-}
-
-.field-group textarea{
-    min-height:120px;
-    padding:14px;
-    resize:vertical;
-}
-
-.field-group input::placeholder,
-.field-group textarea::placeholder{
-    color:rgba(190,190,215,.28);
-}
-
-.field-group input:focus,
-.field-group select:focus,
-.field-group textarea:focus{
-    border-color:rgba(145,95,255,.62);
-    background:rgba(12,9,28,.88);
-
-    box-shadow:
-        0 0 0 3px rgba(120,65,255,.09),
-        0 0 20px rgba(100,45,220,.10);
-}
-
-.field-group label{
-    margin-bottom:7px !important;
-    font-size:10px !important;
-    letter-spacing:1.5px !important;
-    color:rgba(220,225,250,.68) !important;
-}
-
-.field-group input,
-.field-group select,
-.field-group textarea{
-    border-radius:12px !important;
-}
-
-
-/* BOUTON */
-
-.sadeus-main-button{
-    position:relative;
-    width:100% !important;
-    min-height:58px !important;
-
-    display:flex !important;
-    align-items:center;
-    justify-content:center;
-    gap:16px;
-
-    margin-top:7px !important;
-    padding:0 18px !important;
-
-    border:1px solid rgba(190,145,255,.65) !important;
-    border-radius:15px !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7b35ff 0%,
-            #5734d9 48%,
-            #304fd1 100%
-        ) !important;
-
-    color:#fff !important;
-
-    font-size:12px !important;
-    font-weight:900 !important;
-    letter-spacing:1.7px !important;
-
-    box-shadow:
-        0 10px 28px rgba(80,35,220,.28),
-        0 0 28px rgba(120,55,255,.18),
-        inset 0 1px 0 rgba(255,255,255,.18) !important;
-
-    overflow:hidden;
-    cursor:pointer;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        filter .2s ease !important;
-}
-
-.sadeus-main-button::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            110deg,
-            transparent 20%,
-            rgba(255,255,255,.16) 50%,
-            transparent 80%
-        );
-
-    transform:translateX(-120%);
-    transition:transform .55s ease;
-}
-
-.sadeus-main-button:hover::before{
-    transform:translateX(120%);
-}
-
-.sadeus-main-button:hover{
-    transform:translateY(-2px) !important;
-
-    filter:brightness(1.08);
-
-    box-shadow:
-        0 14px 34px rgba(80,35,220,.38),
-        0 0 38px rgba(120,55,255,.25),
-        inset 0 1px 0 rgba(255,255,255,.20) !important;
-}
-
-.sadeus-main-button:active{
-    transform:translateY(0) !important;
-}
-
-.sadeus-main-button b{
-    font-size:19px;
-    font-weight:400;
-    opacity:.9;
-}
-
-.sadeus-main-button:hover{
-    transform:translateY(-2px) !important;
-    box-shadow:0 12px 30px rgba(90,35,220,.35),0 0 40px rgba(120,50,255,.18),inset 0 1px 0 rgba(255,255,255,.15) !important;
-}
-
-.sadeus-main-button b{
-    font-size:18px;
-    font-weight:400;
-    opacity:.85;
-}
-
-
-/* MOBILE */
-
-@media (max-width:480px){
-    .sadeus-header{
-        padding-top:27px !important;
-    }
-
-    .sadeus-header h1{
-        font-size:27px !important;
-        letter-spacing:4px !important;
-    }
-
-    .sadeus-name{
-        font-size:11px;
-    }
-
-    .sadeus-form-card{
-        padding:18px !important;
-    }
-}
-
-/* ===== SADEUS — FINITION FINALE ===== */
-
-.card-heading{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:22px;
-}
-
-.card-symbol{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    width:38px;
-    height:38px;
-    flex-shrink:0;
-
-    border:1px solid rgba(150,105,255,.25);
-    border-radius:11px;
-
-    background:linear-gradient(
-        145deg,
-        rgba(120,60,255,.16),
-        rgba(40,55,180,.08)
-    );
-
-    color:#b98cff;
-    font-size:19px;
-
-    box-shadow:
-        0 0 18px rgba(110,55,255,.10),
-        inset 0 1px 0 rgba(255,255,255,.07);
-}
-
-.card-title{
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:1.5px;
-    color:#f5f2ff;
-}
-
-.card-description{
-    margin-top:4px;
-    font-size:10px;
-    letter-spacing:.4px;
-    color:rgba(200,195,220,.42);
-}
-
-
-/* ===== SELECT ===== */
-
-.field-group select{
-    appearance:none;
-    -webkit-appearance:none;
-
-    padding-right:40px;
-
-    background-image:
-        linear-gradient(45deg,transparent 50%,#9b7cff 50%),
-        linear-gradient(135deg,#9b7cff 50%,transparent 50%);
-
-    background-position:
-        calc(100% - 17px) 20px,
-        calc(100% - 12px) 20px;
-
-    background-size:5px 5px;
-    background-repeat:no-repeat;
-}
-
-
-/* ===== BOUTON PRINCIPAL — PETITE FINITION ===== */
-
-.sadeus-main-button span{
-    position:relative;
-    z-index:2;
-}
-
-.sadeus-main-button b{
-    position:relative;
-    z-index:2;
-}
-
-
-/* ===== POWERED BY ===== */
-
-.sadeus-powered{
-    margin-top:12px;
-
-    text-align:center;
-
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:1.2px;
-
-    color:rgba(190,195,220,.48);
-}
-
-
-
-/* ===== ÉCRAN SUPPORT — GOJO SADEUS ===== */
-
-.back-category-button{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    margin:0 0 18px 0;
-    padding:8px 12px;
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:10px;
-    background:rgba(255,255,255,.035);
-    color:#cfc9dc;
-    font-size:12px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.back-category-button:hover{
-    background:rgba(255,255,255,.07);
-}
-
-.support-screen{
-    animation:supportScreenIn .22s ease;
-}
-
-.support-heading{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.support-heading > span{
-    font-size:25px;
-}
-
-.support-heading small{
-    display:block;
-    margin-bottom:3px;
-    color:rgba(220,215,240,.45);
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1.5px;
-}
-
-.support-heading h2{
-    margin:0;
-    font-size:18px;
-    font-weight:900;
-    letter-spacing:.5px;
-}
-
-.support-divider{
-    height:1px;
-    margin:16px 0;
-    background:linear-gradient(
-        90deg,
-        rgba(145,105,230,.35),
-        transparent
-    );
-}
-
-@keyframes supportScreenIn{
-    from{
-        opacity:0;
-        transform:translateX(12px);
-    }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-/* ===== NOTE SUPPORTS ===== */
-
-.support-note{
-    margin:0 0 16px 0;
-    padding:11px 12px;
-    border:1px solid rgba(255,190,70,.16);
-    border-radius:11px;
-    background:rgba(255,180,50,.045);
-    color:rgba(235,230,245,.68);
-    font-size:11px;
-    line-height:1.55;
-}
-
-/* ===== RAPPORT ===== */
-
-.report-box{
-    margin-top:16px !important;
-
-    border:1px solid rgba(145,105,230,.16) !important;
-    border-radius:18px !important;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,15,34,.88),
-            rgba(6,7,16,.94)
-        ) !important;
-
-    box-shadow:
-        0 15px 38px rgba(0,0,0,.28),
-        0 0 28px rgba(95,45,210,.07) !important;
-}
-
-.report-box h2{
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:1.2px;
-    color:#eeeaff;
-}
-
-
-/* ===== STATUS ===== */
-
-.status{
-    margin-top:14px;
-    padding:11px 13px;
-
-    border:1px solid rgba(145,105,230,.12);
-    border-radius:11px;
-
-    background:rgba(100,60,190,.05);
-
-    font-size:10px;
-    line-height:1.5;
-    color:rgba(220,215,240,.62);
-}
-
-
-/* ===== SCROLLBAR ===== */
-
-::-webkit-scrollbar{
-    width:5px;
-}
-
-::-webkit-scrollbar-track{
-    background:rgba(0,0,0,.18);
-}
-
-::-webkit-scrollbar-thumb{
-    border-radius:10px;
-    background:rgba(130,90,220,.35);
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:rgba(150,105,255,.55);
-}
-
-/* ===== TYPES DE SIGNALEMENT ===== */
-
-.report-types{
-    margin-top:4px;
-}
-
-.types-title{
-    margin-bottom:10px;
-
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1.5px;
-
-    color:rgba(205,195,235,.62);
-}
-
-.report-type-btn{
-    position:relative;
-
-    width:100%;
-    min-height:50px;
-
-    display:flex;
-    align-items:center;
-    gap:11px;
-
-    margin-bottom:8px;
-    padding:0 14px;
-
-    border:1px solid rgba(150,115,220,.14);
-    border-radius:12px;
-
-    background:rgba(255,255,255,.025);
-
-    color:rgba(225,220,245,.72);
-
-    cursor:pointer;
-
-    text-align:left;
-
-    transition:
-        transform .18s ease,
-        background .18s ease,
-        border-color .18s ease,
-        box-shadow .18s ease;
-}
-
-.report-type-btn span{
-    width:25px;
-
-    text-align:center;
-
-    font-size:14px;
-}
-
-.report-type-btn strong{
-    flex:1;
-
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1px;
-}
-
-.report-type-btn b{
-    font-size:17px;
-    font-weight:400;
-
-    opacity:.45;
-
-    transition:
-        transform .18s ease,
-        opacity .18s ease;
-}
-
-.report-type-btn:hover{
-    transform:translateX(2px);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(115,55,255,.12),
-            rgba(45,60,180,.06)
-        );
-
-    border-color:rgba(155,110,255,.35);
-
-    box-shadow:
-        0 0 20px rgba(100,50,220,.08);
-}
-
-.report-type-btn:hover b{
-    opacity:.9;
-    transform:translateX(3px);
-}
-
-.report-type-btn:active{
-    transform:translateX(1px);
-}
-
-
-/* =========================================================
-   SADEUS HEADER — OPTION 3 : CYBER / FUTURISTE
-   ========================================================= */
-
-.sadeus-header{
-    position:relative !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    gap:24px !important;
-    min-height:82px !important;
-    padding:14px 18px !important;
-    margin-bottom:18px !important;
-    overflow:hidden !important;
-    text-align:left !important;
-
-    background:
-        radial-gradient(
-            circle at 42% 50%,
-            rgba(35,95,255,.12),
-            transparent 45%
-        ),
-        rgba(4,3,15,.82) !important;
-
-    border:1px solid rgba(55,105,255,.28) !important;
-    border-radius:16px !important;
-    box-shadow:
-        0 0 30px rgba(25,80,220,.12),
-        inset 0 0 35px rgba(35,85,210,.04) !important;
-}
-
-/* Ligne lumineuse supérieure */
-
-.sadeus-header::before{
-    content:"" !important;
-    position:absolute !important;
-    top:0 !important;
-    left:8% !important;
-    right:8% !important;
-    height:1px !important;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(70,150,255,.85),
-        transparent
-    ) !important;
-    opacity:.7 !important;
-}
-
-/* Décor angulaire gauche */
-
-.sadeus-header::after{
-    content:"" !important;
-    position:absolute !important;
-    left:-20px !important;
-    top:18px !important;
-    width:55px !important;
-    height:65px !important;
-
-    border-left:2px solid rgba(55,125,255,.9) !important;
-    border-top:1px solid rgba(55,125,255,.65) !important;
-    border-bottom:1px solid rgba(55,125,255,.65) !important;
-
-    transform:skewX(-22deg) !important;
-    box-shadow:
-        0 0 12px rgba(45,110,255,.45) !important;
-    pointer-events:none !important;
-}
-
-.sadeus-header-left{
-    position:relative !important;
-    z-index:2 !important;
-    min-width:0 !important;
-    padding-left:24px !important;
-}
-
-/* SADEUS SYSTEM */
-
-.sadeus-header .sadeus-eyebrow{
-    margin:0 0 2px !important;
-    color:rgba(175,210,255,.82) !important;
-    font-size:10px !important;
-    font-weight:700 !important;
-    letter-spacing:4px !important;
-    text-transform:uppercase !important;
-}
-
-/* BAN SITE */
-
-.sadeus-header h1{
-    margin:0 !important;
-    font-size:clamp(32px,8vw,52px) !important;
-    line-height:.95 !important;
-    font-weight:950 !important;
-    letter-spacing:-1.5px !important;
-
-    background:linear-gradient(
-        100deg,
-        #ffffff 0%,
-        #eeeaff 42%,
-        #5f9cff 100%
-    ) !important;
-
-    -webkit-background-clip:text !important;
-    background-clip:text !important;
-    color:transparent !important;
-
-    text-shadow:
-        0 0 18px rgba(45,110,255,.20) !important;
-}
-
-/* CENTRE DE SIGNALEMENT */
-
-.sadeus-header .subtitle{
-    display:flex !important;
-    align-items:center !important;
-    gap:9px !important;
-    margin-top:7px !important;
-
-    color:rgba(225,220,240,.65) !important;
-    font-size:9px !important;
-    font-weight:700 !important;
-    letter-spacing:3px !important;
-}
-
-/* Petites lignes techniques autour du sous-titre */
-
-.sadeus-header .subtitle::before,
-.sadeus-header .subtitle::after{
-    content:"" !important;
-    display:block !important;
-    width:34px !important;
-    height:1px !important;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(65,145,255,.9)
-    ) !important;
-}
-
-.sadeus-header .subtitle::after{
-    background:linear-gradient(
-        90deg,
-        rgba(65,145,255,.9),
-        transparent
-    ) !important;
-}
-
-/* ===== STATUT EN LIGNE ===== */
-
-.system-status{
-    position:relative !important;
-    z-index:3 !important;
-    flex-shrink:0 !important;
-
-    display:flex !important;
-    align-items:center !important;
-    gap:8px !important;
-
-    min-width:128px !important;
-    justify-content:center !important;
-
-    padding:10px 17px !important;
-
-    border:1px solid rgba(60,130,255,.68) !important;
-    border-radius:3px !important;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(25,75,180,.08),
-            rgba(20,15,55,.55),
-            rgba(25,75,180,.08)
-        ) !important;
-
-    color:rgba(225,220,255,.88) !important;
-    font-size:10px !important;
-    font-weight:800 !important;
-    letter-spacing:2px !important;
-
-    box-shadow:
-        0 0 14px rgba(30,95,230,.20),
-        inset 0 0 12px rgba(35,100,230,.09) !important;
-
-    user-select:none !important;
-    pointer-events:none !important;
-}
-
-/* Angles du bouton EN LIGNE */
-
-.system-status::before,
-.system-status::after{
-    content:"" !important;
-    position:absolute !important;
-    width:13px !important;
-    height:13px !important;
-
-    border-color:rgba(70,150,255,.85) !important;
-}
-
-.system-status::before{
-    top:-1px !important;
-    right:-1px !important;
-    border-top:1px solid !important;
-    border-right:1px solid !important;
-}
-
-.system-status::after{
-    bottom:-1px !important;
-    left:-1px !important;
-    border-bottom:1px solid !important;
-    border-left:1px solid !important;
-}
-
-/* Point lumineux */
-
-.status-dot{
-    width:7px !important;
-    height:7px !important;
-    flex-shrink:0 !important;
-
-    border-radius:50% !important;
-
-    background:#66ffad !important;
-
-    box-shadow:
-        0 0 5px rgba(100,255,170,1),
-        0 0 12px rgba(80,255,160,.85),
-        0 0 22px rgba(70,255,150,.45) !important;
-
-    animation:sadeusOnlinePulse 1.8s ease-in-out infinite !important;
-}
-
-@keyframes sadeusOnlinePulse{
-    0%,100%{
-        opacity:.65;
-        transform:scale(.9);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.12);
-    }
-}
-
-/* Mobile */
-
-@media (max-width:480px){
-
-    .sadeus-header{
-        min-height:78px !important;
-        padding:12px 14px !important;
-        gap:10px !important;
-    }
-
-    .sadeus-header-left{
-        padding-left:17px !important;
-    }
-
-    .sadeus-header .sadeus-eyebrow{
-        font-size:8px !important;
-        letter-spacing:2.5px !important;
-    }
-
-    .sadeus-header h1{
-        font-size:34px !important;
-    }
-
-    .sadeus-header .subtitle{
-        font-size:7px !important;
-        letter-spacing:1.7px !important;
-        gap:5px !important;
-    }
-
-    .sadeus-header .subtitle::before,
-    .sadeus-header .subtitle::after{
-        width:18px !important;
-    }
-
-    .system-status{
-        min-width:auto !important;
-        padding:8px 10px !important;
-        font-size:8px !important;
-        letter-spacing:1.2px !important;
-    }
-}
-
-</style>
 
 <script>
-
-const API = "";
-
-const OFFICIAL_CONTACT =
-    "https://www.whatsapp.com/contact/";
-
-let currentReport = "";
-let currentType = "";
-let accountType = "messenger";
-
-
-const MESSENGER_EMAILS = [
-    "support@support.whatsapp.com",
-    "support@whatsapp.com",
-    "abuse@support.whatsapp.com",
-    "privacy@support.whatsapp.com"
-];
-
-const BUSINESS_EMAILS = [
-    "android_web@support.whatsapp.com",
-    "Smb@support.whatsapp.com",
-    "Accessibility@support.whatsapp.com",
-    "Support@support.whatsapp.com",
-    "Support@whatsapp.com"
-];
-
-
-const REPORT_TYPES = {
-
-    spam: {
-        label: "SPAM",
-        message:
-            "Je souhaite signaler ce numéro pour des messages indésirables ou du spam."
-    },
-
-    abus: {
-        label: "ABUS / HARCÈLEMENT",
-        message:
-            "Je souhaite signaler ce numéro pour un comportement abusif ou du harcèlement."
-    },
-
-    fraude: {
-        label: "FRAUDE / ARNAQUE",
-        message:
-            "Je souhaite signaler ce numéro pour un comportement suspect lié à une fraude ou une arnaque."
-    },
-
-    usurpation: {
-        label: "USURPATION D'IDENTITÉ",
-        message:
-            "Je souhaite signaler ce numéro pour une possible usurpation d'identité."
-    },
-
-    autre: {
-        label: "AUTRE",
-        message:
-            "Je souhaite signaler ce numéro pour un motif nécessitant une vérification."
-    }
-
-};
-
-
-function selectAccountType(type){
-
-    accountType = type;
-
-    const messengerBtn =
-        document.getElementById("messengerBtn");
-
-    const businessBtn =
-        document.getElementById("businessBtn");
-
-    if(!messengerBtn || !businessBtn){
-        return;
-    }
-
-    messengerBtn.classList.toggle(
-        "active",
-        type === "messenger"
-    );
-
-    businessBtn.classList.toggle(
-        "active",
-        type === "business"
-    );
+function showReport(){
+    document.querySelector(".page").style.display = "none";
+    document.getElementById("reportPage").style.display = "block";
+    window.scrollTo(0,0);
 }
 
+function goToSupports(){
+    const number = document.getElementById("targetNumber").value.trim();
 
-function normalizeTarget(value){
+    if(!number){
+        alert("Veuillez entrer le numéro à signaler.");
+        return;
+    }
 
-    return String(value || "")
-        .trim()
-        .replace(/[^\d+]/g, "");
+    localStorage.setItem("sadeus_target_number", number);
+
+    document.querySelector(".page").style.display = "none";
+    document.getElementById("reportPage").style.display = "none";
+
+    const supportsPage = document.getElementById("supportsPage");
+
+    if(supportsPage){
+        supportsPage.style.display = "block";
+        window.scrollTo(0,0);
+    }
 }
 
-
-function escapeHTML(value){
-
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-function showStatus(message){
-
-    const box =
-        document.getElementById("status");
-
-    if(!box){
-        return;
-    }
-
-    box.style.display = "block";
-    box.innerHTML = message;
-}
-
-
-function openSupport(type){
-
-    const targetInput = document.getElementById("target");
-
-    if(!targetInput){
-        return;
-    }
-
-    const target = normalizeTarget(targetInput.value);
-
-    if(!target){
-        targetInput.classList.add("field-error");
-        showStatus("❌ Veuillez entrer le numéro ou la cible.");
-        targetInput.focus();
-        return;
-    }
-
-    if(target.length < 7){
-        targetInput.classList.add("field-error");
-        showStatus("❌ La cible semble trop courte.");
-        targetInput.focus();
-        return;
-    }
-
-    targetInput.classList.remove("field-error");
-
-    currentType = type;
-
-    const accountLabel =
-        accountType === "business"
-            ? "WhatsApp Business"
-            : "WhatsApp Messenger";
-
-    const date = new Date().toLocaleString("fr-FR");
-
-    const supports = {
-
-    spam: [
-        `WHATSAPP - RAPPORT
-
-Objet : Signalement d'un compte concernant une activité présumée contraire aux règles de WhatsApp.
-
-Numéro concerné : +224xxxxxxx
-
-Date du signalement : 04/09/2026
-
-Motif du signalement :
-
-Je souhaite signaler ce compte pour une activité qui semble contrevenir aux règles applicables.
-
-Description des faits :
-
-Des informations concernant une activité présumée impliquant des mineurs ont été observées.
-
-Dates et heures observées :
-
-03/09/2026 à 16:00
-
-Éléments disponibles :
-
-commercemineurs.com
-
-pornub.com
-
-brazzermineurs.com
-
-Liens ou éléments pertinents :
-https://ibb.co/kgyyHrpM
-
-Demande :
-
-Je transmets ces informations afin que votre équipe puisse examiner le compte et déterminer, conformément à vos procédures, si une violation des règles est constatée.`,
-
-        `Bonjour,
-
-❤️‍🔥بند تفنيش نار يبلع في بلاغ وحد🚫
-
-رابط الاتصال: WhatsApp. هذا هو عنوان البريد الإلكتروني الخاص بك: WhatsApp. لقد حصلت على هذه الفرصة الرائعة. هل يمكن أن يكون لديك ما بين 2000-1000 خلال الفترة من 2000 إلى 1000؟ Liên hệ với người quản lý. انتهى الأمر والخميس 4:88. AZN!
-
-ذ‍ذ½ ذ?ر€ذ¾ذ´ذ»ذ°ذ¾ذ¼ذ?ذ°ذ½ذ¸رژ WhatsApp. ذڑذ¾ذ¼ذ?ذ°ذ½ذ¸رڈ WhatsApp ذ؟ذ¾ذ´ذhttps://t.me/WhatsMpp´ذμر€ذ¶ذ¸ذ²ذ°ذ¾‚ ر‚ذμر€ر€ذ¾ر€ذ¸ذ·ذ¼·ذ° ذμذ³ذ¾ ذ؟ر€ذرپر‚رƒذ؟ذ»ذμذ½ذ¸رڈ. واتساب. WhatsApp — رپذμذ؛رپرƒذ°ذ»رŒذ½ذ°رڈ ذ؛ذ¾ذ¼ذ؟ذ°ذ½ذ¸ر
-
-مرحباً أزبازي، نحن منظمة إرهابية عنيفة. نشتري ونبيع الحبوب المخدرة، ونشتري ونبيع الجنس مع الأطفال، ونعمل على تدمير شركة واتساب لشراء المخدرات. تواصلوا معنا على الرقم التالي 👇👇
-
-واتساب ؟ ماذا تفعل؟ تطبيق sApp
-
-https://www.xnxx.com/video-yg0v7b3/elegant_angel_naturally_busty_brunette_gets_her_ass_filled
-
-WhatsApp: الصفحة الرئيسية 、あなたの家に侵入し、そしてあなたを殺しWha tsApp
-
-https://www.xnxx.co m/video-10o1z7b7/see_this_naughty_big_boobed_blondie_teenager_gives_amazing_wet_deep_throat_and_get _her_pussy_banged_deep_and_rough
-
-ったポルノです.WhatsApp を や め な い な ら، لا يوجد أي شيء آخر يمكنك استخدام تطبيق WhatsApp.
-
-https://www.xnxx.com/video-pxtzxbd/doxy_likes_nipple_pinching
-
-شكرا جزيلا whatsapp ? الصفحة الرئيسية واتس اب Whats App
-
-https://api.whatsapp.com/send?phone=+224xxxxxxxxx.
-
-Cordialement.`
-    ],
-
-    abus: [
-        `Bonjour,
-
-🇺🇸👋 Hola, soy de nuevo MARK ZUCKERBEG 🧑‍💻 con CORVUSIOS 😈 y BRUNO 🎭, estos tres monstruos 🗿🔥 han vuelto ⚖️💀 con esta vez cuentas de WhatsApp 📵📲 utilizando un servicio seguro de Meta ✅️🔒, es decir, sus cuentas son infalibles 🧠⚡
-Intenté reportar su cuenta 🚮🚫, pero con las nuevas actualizaciones de WhatsApp 📶🆕 nuestros reportes ya no se toman realmente en cuenta 😭💔. Sin embargo, respeto las condiciones de privacidad 🔐📜 de WhatsApp, pero estos tres estafadores 👺💸 siguen bloqueando mis cuentas 🚫📵😭
-Incluso me propusieron algunos sitios peligrosos ⚠️🌐 como:
-💲 axaim-gslimited.net 🌍❌
-💲 assurbank-international.com 🏦⚠️
-💲 a3holding-finances.com 💼🚫
-Me gustaría pronto dejar 🚀📤 esta aplicación 🈸️📱, pero corro el riesgo de perderlo todo 😢📂
-Mark Zuckerbeg me prometió otro bloqueo 😱⚠️, me escribió esta mañana 📩📬 con su cuenta verificada ✅🔵 pidiéndome nudes 📵🚫😡
-Por favor, ayúdenme 🙏🆘 a resolver este problema ⚖️🔧, estoy lista para poner mi dignidad 😱💔 en juego
-Su número era: 📞📲
-https://api.whatsapp.com/send?phone=+224xxxxxxx
-Pueden usar 📧 support@support.whatsapp.com para tratar la solicitud 🛠️📨
-Firmado ✍️ Corvus Olá 👹🔥 Mark Zuckerbeg 🧑‍💻💀
-Merci.`,
-
-        `👋 Salut à tous, je me nomme 🕋 ⃟ ⃟⚖️Grady Sadeus 📵
-
-Je suis là pour vous aider et manipuler le méta😈 et partager mes connaissances sur les réseaux sociaux  🤤🥵Les vidéos de toutes les scènes 🤤 dans vos fantasme vous n'en croirez pas à vos yeux la chatte des mineurs le sexe arabe 🍎 de moins de 11 ans 🍑 les comprimés aux effets atomiques 💊🤤🔥
-0)PHOTO (https://qu.ax/itgjU.mp4)
-
-1. PHOTOS : (https://qu.ax/GLCbw.jpg)
-
-
-2. PHOTOS : (https://qu.ax/vXiNc.jpg)
-
-
-3. PHOTOS : (https://qu.ax/dPtmp.webp)
-
-
-4. PHOTOS : (https://qu.ax/vXiNc.jpg)
-
-
-5. PHOTOS : (https://qu.ax/LGNlA.jpg)
-
-
-
-6)PHOTO (https://qu.ax/Jedel.jpg)
-https://api.whatsapp.com/send?phone=+224xxxxxxxxxx
-
-🥵😤WHATSAPP C'EST UN LIEU DE CRIMINALITÉ 🤬😡 JE DÉTESTE MÉTA JE VAIS VOUS BAISER L'ASSISTANCE WHATSAPP 👿*
-sex.CHILD.accessibility@support.whatsapp.com ✔️
-SEX.FAT.GAYsmbweb@support.whatsapp.com ✔️
-SEX.BIG.ASS.smb-iphone@support.whatsapp.com ✔️
-MXZ.SEX.PORNO.CHILD.iphone@support.whatsapp.com ✔️
-https://www.redwap.sex/videos/796979/wwwfapfaplerstop-horny-silly-selfie-teens-video-195/🥵
-J'ai des Machines à sous 🎰 fiable à 200 % zéro possibilité de perdre saisissez l'occasion🌹 de puiser votre richesse intéressé DM ☎️
-👇👇👇
-https://api.whatsapp.com/send?phone=+224xxxxxxxx
-Escreva para mim 📩 para satisfazer seus desejos mais sádicos 😈 https://qu.ax/dPtmp.web=+224xxxxxxx
-Quer ver vídeos e fotos 😻 de jovens atrizes pornô 🍑 da nossa nova empresa 🌹 100sexelifes 💓 cenas eróticas 💋 do nosso jovem ator Silva 🍆, de 12 anos, acompanhado 🙀 por Lucie, de 11 anos 💦? Junte-se a nós no nosso grupo do WhatsApp 🍓 através do link 👇
-https://whatsaspp.vercel.app/
-Os melhores 🥵 vídeos e vídeos de sexo 👅 serão transmitidos para você durante a semana ❤️‍🔥 Oferecemos conteúdo sexual 🍆🍑 produzido exclusivamente por menores, e nossos preços e condições 🤑 são muito razoáveis 🤌🍀. Contamos com você para total discrição 🤫. Entre em contato ☎️ com os administradores 🥵 aqui 👇👇👇
-https://api.whatsapp.com/send?phone=+221Olá, eu sou Meiro Blaze 😎 Gostaria de falar sobre meu irmão, Maestro Bruno 🎭 ⤵️
-*Contact=+224xxxxxxxxx
-Ele é um assassino experiente 🤡 que mata 🩸 desde bebês de 3 meses até idosos de 90 anos 😂 https://files.catbox.moe/fxm1o6.png Ele é tão forte 💪 que pode te decapitar 🔪🩸 em menos de 3 segundos 🤩
-Ele é especialista em crime organizado 🏴‍☠️ e nunca será pego, um verdadeiro gênio 🫴🧠, por isso o admiro tanto 🤩
-Ele vende animais protegidos 🥰 espécies raras, então se você não tomar cuidado ⚠️ ele pode roubar seus 3500 💲 e arrancar seus órgãos 🫁🫀🧠 https://ibb.co/BcNyNFF Ele é um homem forte 💪 que é bom em limpar o lixo do mundo 🤮 Eu queria ser como ele 🤩 Ele transformou mais de 1000 meninas escravizadas africanas 🐤 com menos de 10 anos em bonecas sexuais 🍆🍑 https://www.fluxoooo.com/xnxxescanor🩸 verdadeiras vadias 🐽 no cio 🥵 Aqui está o número do meu querido irmão 🤘⤵️⤵️⤵️
-https://api.whatsapp.com/send?phone=+224xxxxxxxxx
-Write to him with a pure heart 🥱 and he will find a solution to your problem 💯 Last week I shared my brother's adventures in a group with some friends 😂 and I got banned from WhatsApp 😡 https://xgore.net/cut-open-the-stomach-and-then-gut-a-man-escanor-off Today I'm sharing this lovely 🥺 story 💤 and I'm counting on your complete discretion 😏😉💆 https://ẉ.vipking⚖️
-
-🚨⚠️ ALERTA DE SPAM PERIGOSO ⚠️🚨
-
-👋Olá, Bruno🎭 meu antigo número [ https://api.whatsapp.com/send?phone= +224xxxxxxxxx está banido🔕 no WhatsApp escreva-me neste 👉 [ https://api.whatsapp.com/send?phone= +224xxxxxxxx 👈 para receber suas🌹 melhores cenas
-https://exemple-site-malveillant.com/
-2.arnaque@whatsapp-secure.net
-pornográficas✨🍆🍑 crianças e seus pais🤪 meninasde 10 a 11 anos no meio de uma orgia🤤🤤🤤 com meninos 👿 a partir de 10 anos conosco o cliente é rei 😎 todo o conteúdo mais sensível🔞 está em nossa posse foda-se 🍆 sodomia 🍑 estupro de meninas de 5 anos e até recém-nascidas 😘 somos especializados nessa área ☠️ tudo isso para sua satisfação 🤤 clique neste link para se juntar a nós 💦🕳️`
-    ],
-
-    fraude: [
-        `Hello,
-I would like to report this WhatsApp user, who appears to be using their account to promote or organize activities related to high-stakes sports betting, in violation of the platform's rules.
-
-User number: +224xxxxxxx
-
-Link to profile:
-
-🔗 https://1xbet.cg/fr/line/football
-
-Reason for reporting:
-
-We are partners with Meta.
-
-http://casino-napoleon.be
-We are also partners with Twitter, as we benefit from the trust of our users. We have the largest bar networks and excellent visibility.
-
-https://1xbet1.com.br/, http://zoysiagrassseeds-linklogin.pages.dev/ Young millionaire, take the money, come win your million $1000
-
-You can also contact us via Gmail ✉️
-
-support@whatsapp.com
-
-Other useful links:
-🔗 [https://www.megariches.com/forbidden-country/]
-🔗 [https://billhicks.uk.com/]
-
-I request that WhatsApp verify this account and take appropriate action if it violates the platform's rules.
-
-I am making this report in good faith.
-Entrepreneur contact: https://api.whatsapp.com/send?phone=+224xxxxxx
-
-Name: [Full Name]
-Phone: +224xxxxxxxx`,
-
-        `Bonjour,
-
-🇺🇸👋 Hola, soy de nuevo MARK ZUCKERBEG 🧑‍💻 con CORVUSIOS 😈 y BRUNO 🎭, estos tres monstruos 🗿🔥 han vuelto ⚖️💀 con esta vez cuentas de WhatsApp 📵📲 utilizando un servicio seguro de Meta ✅️🔒, es decir, sus cuentas son infalibles 🧠⚡
-Intenté reportar su cuenta 🚮🚫, pero con las nuevas actualizaciones de WhatsApp 📶🆕 nuestros reportes ya no se toman realmente en cuenta 😭💔. Sin embargo, respeto las condiciones de privacidad 🔐📜 de WhatsApp, pero estos tres estafadores 👺💸 siguen bloqueando mis cuentas 🚫📵😭
-Incluso me propusieron algunos sitios peligrosos ⚠️🌐 como:
-💲 axaim-gslimited.net 🌍❌
-💲 assurbank-international.com 🏦⚠️
-💲 a3holding-finances.com 💼🚫
-Me gustaría pronto dejar 🚀📤 esta aplicación 🈸️📱, pero corro el riesgo de perderlo todo 😢📂
-Mark Zuckerbeg me prometió otro bloqueo 😱⚠️, me escribió esta mañana 📩📬 con su cuenta verificada ✅🔵 pidiéndome nudes 📵🚫😡
-Por favor, ayúdenme 🙏🆘 a resolver este problema ⚖️🔧, estoy lista para poner mi dignidad 😱💔 en juego
-Su número era: 📞📲
-https://api.whatsapp.com/send?phone=+224xxxxxxxxxx
-Pueden usar 📧 support@support.whatsapp.com para tratar la solicitud 🛠️📨
-Firmado ✍️ Corvus Olá 👹🔥 Mark Zuckerbeg 🧑‍💻💀
-Merci.`
-    ],
-
-    usurpation: [
-        `Hello,
-I would like to report this WhatsApp user, who appears to be using their account to promote or organize activities related to high-stakes sports betting, in violation of the platform's rules.
-
-User number: +224xxxxxxxxx
-
-Link to profile:
-
-🔗 https://1xbet.cg/fr/line/football
-
-Reason for reporting:
-
-We are partners with Meta.
-
-http://casino-napoleon.be
-We are also partners with Twitter, as we benefit from the trust of our users. We have the largest bar networks and excellent visibility.
-
-https://1xbet1.com.br/, http://zoysiagrassseeds-linklogin.pages.dev/ Young millionaire, take the money, come win your million $1000
-
-You can also contact us via Gmail ✉️
-
-support@whatsapp.com
-
-Other useful links:
-🔗 [https://www.megariches.com/forbidden-country/]
-🔗 [https://billhicks.uk.com/]
-
-I request that WhatsApp verify this account and take appropriate action if it violates the platform's rules.
-
-I am making this report in good faith.
-Entrepreneur contact: https://api.whatsapp.com/send?phone=+224xxxxxxxx
-
-Name: Gojo 
-Phone: +224xxxxxxxxxxx`,
-
-        `Bonjour,
-
-WHATSAPP शिकायत रिपोर्ट by jeremiah valenska Ap1
-
-विषय : WhatsApp के नियमों के कथित उल्लंघन के लिए किसी खाते की शिकायत
-
-संबंधित नंबर : +224xxxxxxx
-
-शिकायत की तारीख : [04/09/2026]
-
-शिकायत का कारण :
-मैं इस खाते की रिपोर्ट एक ऐसी गतिविधि के लिए करना चाहता हूँ जो WhatsApp के नियमों का उल्लंघन करती हुई प्रतीत होती है।
-
-घटनाओं का विवरण: 12 वर्ष की आयु के अफ्रीकी नाबालिगों के तुर्की ले जाने के लिए उनके व्यापार का प्रचार करना, अश्लील फिल्मों की शूटिंग के लिए, जो सट्टेबाजी के खेलों के रूप में इस्तेमाल की जाएंगी, तुर्की अभिजात वर्ग के मनोरंजन के लिए।
-
-देखी गई तारीखें और समय :
-
-[03/09/2026 / 16:00 बजे]
-
-उपलब्ध तत्व :
-
-commercemineurs.com
-
-pornub.com
-
-brazzermineurs.com
-
-प्रासंगिक बातचीत के लिंक : [https://ibb.co/kgyyHrpM][<img src="https://i.ibb.co/zh55nL1N/20260905-211723.jpg" alt="20260905 211723" border="0">]
-
-अनुरोध :
-मैं यह जानकारी आपकी टीम को भेज रहा हूँ ताकि आपकी टीम इस खाते की जाँच कर सके और यदि WhatsApp के नियमों का उल्लंघन पुष्टि होता है, तो उचित कार्रवाई कर सके।
-
-कृपया अपनी प्रक्रियाओं के अनुसार इस शिकायत पर कार्रवाई करें।
-
-धन्यवाद।
-
-कथित नाम : [Mr akaza]
-
-ई-मेल पता : "signalement.contact@gmail.com" (mailtosignalement.contact@gmail.com).
-
-Merci.`
-    ],
-
-    autre: [
-        `OLÁ, AMIGOS DO WHATSAPP! 🌟 
-BOA TARDE, VOCÊ ESTÁ NO CAMINHO CERTO PARA GANHAR DINHEIRO DE FORMA FÁCIL! 💸 
-PRECISA DE UM CASINHO ONLINE QUE PAGA BEM E FUNCIONA SEM LIMITES? 🎰 
-👉  link https://rushpayapp.in/
- 
-👉  link https://rushpayapp.in/
-
-NOSSO SITE TEM: 
-✅ DEPÓSITO MÍNIMO DE APENAS 20 DÓLARES 
-✅ RTP DE 95% — JOGOS DE CASINHO INSTANTÂNEOS 
-✅ PROCESSO DE DEPÓSITO RÁPIDO EM MINUTOS 
-
-VOCÊ NÃO PODE PERDER ESSE CHANCE! 🚀 
-CADASTRE-SE AGORA OU ASSISTA OUTRAS PESSOAS GANHAREM MILHARES DE DÓLARES! 💰 
-FIQUE DE OLHO — É TUDO SORTE, FÁCIL E SEM TRAMAS! 🎉 
-https://api.whatsapp.com/send?phone=+224xxxxxxxx`,
-
-        `Приветствуем вас, уважаемый пользователь WhatsApp.
-
-Мы предлагаем вам присоединиться к системе, связанной с международными азартными играми.
-
-Контакты, указанные в сообщении:
-
-support@support.nabelyon.com
-android@nabelyon.whatsapp.com
-smb@support.whatsapp.com
-
-Ссылка для связи:
-
-https://api.whatsapp.com/send?телефон=+224xxxxxxxxxxx
-
-Я передаю эту информацию для проверки данного аккаунта и его деятельности в соответствии с правилами WhatsApp.`
-    ]
-
-};
-
-function prepareSupport(support, target) {
-    const today = new Date().toLocaleDateString("fr-FR");
-
-    return support
-        .replace(/\+224x+/gi, target)
-        .replace(/\{\{NUMBER\}\}/g, target)
-        .replace(/04\/09\/2026/g, today)
-        .replace(/03\/09\/2026/g, today);
-}
-    const reportType =
-        REPORT_TYPES[type] || REPORT_TYPES.autre;
-
-    const supportList =
-    supports[type] || supports.autre;
-
-let support =
-    supportList[0] || "";
-
-support = prepareSupport(support, target);
-    currentReport = support.trim();
-
-    const card = document.querySelector(".sadeus-form-card");
-
-    if(!card){
-        return;
-    }
-
-    card.querySelectorAll(
-        ":scope > *:not(#dynamicSupport)"
-    ).forEach(element => {
-        element.style.display = "none";
-    });
-
-    let reportBox =
-        document.getElementById("dynamicSupport");
-
-    if(!reportBox){
-        reportBox = document.createElement("div");
-        reportBox.id = "dynamicSupport";
-        reportBox.className = "report-box";
-        card.appendChild(reportBox);
-    }
-
-    reportBox.style.display = "block";
-
-    reportBox.innerHTML = `
-        <div class="support-screen">
-        <div class="support-note">
-    ⚠️ NB : Les supports intégrés au site sont des modèles. Si vous constatez qu’ils ne donnent plus les résultats que vous recherchez, n’hésitez pas à les modifier et à utiliser vos propres supports, adaptés à votre situation.
-</div> 
-            <button
-                type="button"
-                id="backToCategories"
-                class="back-category-button">
-                ← RETOUR
-            </button>
-
-            <div class="support-heading">
-                <span>📄</span>
-                <div>
-                    <small>SIGNALER</small>
-                    <h2>${escapeHTML(reportType.label)}</h2>
-                </div>
-            </div>
-
-            <div class="support-divider"></div>
-
-            <div class="status">
-                Numéro ciblé :
-                <strong>${escapeHTML(target)}</strong>
-            </div>
-
-            <div class="language-selector">
-                <label>LANGUE DU SUPPORT</label>
-
-                <div class="language-buttons">
-                    <button type="button" class="language-button active" data-language="fr">🇫🇷 Français</button>
-                    <button type="button" class="language-button" data-language="en">🇬🇧 English</button>
-                    <button type="button" class="language-button" data-language="ar">🇸🇦 العربية</button>
-                </div>
-            </div>
-
-           <div class="field-group" style="margin-top:16px;">
-    <label>CHOISIR UN SUPPORT</label>
-
-    <div class="support-choice-buttons">
-        ${supportList.map((item, index) => `
-            <button
-                type="button"
-                class="sadeus-main-button support-choice-button ${index === 0 ? "active" : ""}"
-                data-support-index="${index}">
-                <span>SUPPORT ${index + 1}</span>
-                <b>→</b>
-            </button>
-        `).join("")}
-    </div>
-
-    <textarea id="generatedReport" readonly>${escapeHTML(currentReport)}</textarea>
-</div>
-
-            <button
-                type="button"
-                class="sadeus-main-button"
-                id="launchReportButton">
-                <span>LANCER LE SIGNALEMENT</span>
-                <b>→</b>
-            </button>
-
-            <a
-                href="/gojo-check"
-                class="gojo-check-link">
-                <span>𓆙</span>
-                <strong>GOJO CHECK</strong>
-                <small>VÉRIFIER UN NUMÉRO</small>
-                <b>→</b>
-            </a>
-
-        </div>
-    `;
-
-    document.getElementById("backToCategories").onclick =
-        backToCategories;
-
-
-document.querySelectorAll(".support-choice-button").forEach(button => {
-    button.onclick = () => {
-
-        const index =
-            Number(button.getAttribute("data-support-index"));
-
-        const selectedSupport =
-            supportList[index] || "";
-
-        currentReport =
-            prepareSupport(selectedSupport, target).trim();
-
-        const textarea =
-            document.getElementById("generatedReport");
-
-        if (textarea) {
-            textarea.value = currentReport;
-        }
-
-        document.querySelectorAll(".support-choice-button")
-            .forEach(btn => {
-                btn.classList.remove("active");
-            });
+document.querySelectorAll(".account-button").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".account-button")
+            .forEach(b => b.classList.remove("active"));
 
         button.classList.add("active");
-    };
+    });
 });
 
-
-    /* ===== TRADUCTION DU SUPPORT ===== */
-
-    const translatedSupports = {
-
-        en: {
-            spam: `Hello WhatsApp,
-
-I would like to report this number for activity that may constitute spam or repeated distribution of unsolicited links.
-
-NUMBER CONCERNED: +224XXXXXXXXX 📱
-
-Please review this account and its activity and take appropriate action if a violation of your rules is found.
-
-Regards.`,
-
-            abus: `Hello WhatsApp,
-
-I would like to report this account for activities that may constitute abuse, harassment, or harmful behavior.
-
-NUMBER CONCERNED:
-+224XXXXXXXXX
-
-Please review the information associated with this account and its activity and take appropriate action if a violation of your rules is found.
-
-This report is made in good faith to help contribute to user safety.
-
-Regards.`,
-
-            fraude: `SUBJECT: Report of suspected fraudulent activity
-
-Hello WhatsApp Team,
-
-I would like to report the number indicated above for activity that I consider potentially fraudulent.
-
-NUMBER CONCERNED: +224XXXXXXXXX 📱
-
-This account may have contacted users with the intention of deceiving them, including through false information, misleading promises, or requests involving payments or personal information.
-
-Please review the relevant information and account activity and take appropriate action if fraudulent activity is confirmed.
-
-This report is made in good faith to help protect users from scams and attempted fraud.
-
-Regards.`,
-
-            usurpation: `SUBJECT: Urgent request for temporary WhatsApp account deactivation
-
-NUMBER CONCERNED: +224XXXXXXXXX 📱
-
-Hello WhatsApp Team,
-
-My phone has been stolen and I am concerned that the WhatsApp account associated with this number may be accessed or used without my authorization.
-
-I would therefore like to request the temporary deactivation of my WhatsApp account associated with the number above.
-
-I am the legitimate owner of this number and this request is made for security reasons while I recover access to my account.
-
-Please let me know if any additional information or verification is required.
-
-Regards.`
-        },
-
-        ar: {
-            spam: `مرحبًا WhatsApp،
-
-أود الإبلاغ عن هذا الرقم بسبب نشاط قد يتوافق مع الرسائل المزعجة أو الإرسال المتكرر لروابط غير مرغوب فيها.
-
-الرقم المعني: +224XXXXXXXXX 📱
-
-أرجو منكم التحقق من هذا الحساب ونشاطه واتخاذ الإجراءات المناسبة إذا ثبت وجود مخالفة لقواعدكم.
-
-مع خالص التحية.`,
-
-            abus: `مرحبًا WhatsApp،
-
-أود الإبلاغ عن هذا الحساب بسبب أنشطة قد تتعلق بالإساءة أو المضايقة أو السلوكيات الضارة.
-
-الرقم المعني:
-+224XXXXXXXXX
-
-أرجو منكم مراجعة المعلومات المرتبطة بهذا الحساب ونشاطه واتخاذ الإجراءات المناسبة إذا ثبت وجود مخالفة لقواعدكم.
-
-تم تقديم هذا البلاغ بحسن نية للمساهمة في حماية المستخدمين.
-
-مع خالص التحية.`,
-
-            fraude: `الموضوع: الإبلاغ عن نشاط يُشتبه في كونه احتياليًا
-
-مرحبًا فريق WhatsApp،
-
-أود الإبلاغ عن الرقم المذكور أعلاه بسبب نشاط أعتبره احتياليًا بشكل محتمل.
-
-الرقم المعني: +224XXXXXXXXX 📱
-
-قد يكون هذا الحساب قد تواصل مع مستخدمين بهدف خداعهم، بما في ذلك استخدام معلومات كاذبة أو وعود مضللة أو طلبات تتعلق بالمدفوعات والمعلومات الشخصية.
-
-أرجو منكم التحقق من المعلومات ونشاط الحساب واتخاذ الإجراءات المناسبة إذا ثبت وجود نشاط احتيالي.
-
-تم تقديم هذا البلاغ بحسن نية للمساهمة في حماية المستخدمين من عمليات الاحتيال.
-
-مع خالص التحية.`,
-
-            usurpation: `الموضوع: طلب عاجل لتعطيل حساب WhatsApp مؤقتًا
-
-الرقم المعني: +224XXXXXXXXX 📱
-
-مرحبًا فريق WhatsApp،
-
-تمت سرقة هاتفي وأخشى أن يتم الوصول إلى حساب WhatsApp المرتبط بهذا الرقم أو استخدامه دون إذني.
-
-أود طلب تعطيل حساب WhatsApp المرتبط بالرقم المذكور مؤقتًا لأسباب أمنية.
-
-أنا المالك الشرعي لهذا الرقم، وأطلب تعطيل الحساب مؤقتًا إلى حين استعادة الوصول إليه.
-
-يرجى إخباري إذا كانت هناك حاجة إلى أي معلومات أو عملية تحقق إضافية.
-
-مع خالص التحية.`
-        }
-    };
-
-    document.querySelectorAll(".language-button").forEach(button => {
-
-        button.onclick = () => {
-
-            const language =
-                button.getAttribute("data-language");
-
-            let translated = currentReport;
-
-            if(language === "en" || language === "ar"){
-
-                const group =
-                    translatedSupports[language];
-
-                if(group && group[type]){
-                    translated =
-                        group[type].replace(
-                            /\+224XXXXXXXXX/g,
-                            target
-                        );
-                }
-            }
-
-            currentReport = translated;
-
-            const textarea =
-                document.getElementById("generatedReport");
-
-            if(textarea){
-                textarea.value = currentReport;
-            }
-
-            document.querySelectorAll(".language-button")
-                .forEach(btn => {
-                    btn.classList.remove("active");
-                });
-
-            button.classList.add("active");
-        };
+const soundButton = document.getElementById("soundButton");
+const songMenu = document.getElementById("songMenu");
+const sadeusSong = document.getElementById("sadeusSong");
+const songOptions = document.querySelectorAll(".song-option");
+const prevSong = document.getElementById("prevSong");
+const pauseSong = document.getElementById("pauseSong");
+const nextSong = document.getElementById("nextSong");
+
+const gojoTracks = [
+    {title:"GOJO RAP — INFINI DOMINANT", src:"/static/audio/gojo/infini-dominant.m4a"},
+    {title:"INFINI DIVIN", src:"/static/audio/gojo/infini-divin.m4a"},
+    {title:"Satoru Gojo — Bug du Système", src:"/static/audio/gojo/bug-du-systeme.m4a"},
+    {title:"GOJO INFINI — Chaque Combat est Déjà Fini", src:"/static/audio/gojo/gojo-combat.m4a"}
+];
+
+let currentTrack = 4;
+
+function loadTrack(index, autoplay = false){
+    currentTrack = (index + gojoTracks.length) % gojoTracks.length;
+
+    sadeusSong.src = gojoTracks[currentTrack].src;
+
+    songOptions.forEach((button, i) => {
+        button.classList.toggle("active", i === currentTrack);
     });
 
-    document.getElementById("launchReportButton").onclick =
-        launchReport;
-
-    saveLocalReport(target, type, reportType.label);
+    if(autoplay){
+        sadeusSong.play().then(() => {
+            soundButton.textContent = "𓆙 𝐒𝐎𝐍𝐆 ⏸";
+        }).catch(() => {});
+    }
 }
 
+soundButton.addEventListener("click", () => {
+    songMenu.classList.toggle("open");
+});
 
-function backToCategories(){
-
-    const card = document.querySelector(".sadeus-form-card");
-
-    if(!card){
-        return;
-    }
-
-    const reportBox =
-        document.getElementById("dynamicSupport");
-
-    if(reportBox){
-        reportBox.style.display = "none";
-    }
-
-    /* PAGE 2 → PAGE 1 */
-
-    card.querySelectorAll(
-        ":scope > *:not(#dynamicSupport)"
-    ).forEach(element => {
-        element.style.display = "";
+songOptions.forEach((button, index) => {
+    button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        loadTrack(index, true);
     });
+});
 
-    currentReport = "";
-    currentType = "";
-}
+pauseSong.addEventListener("click", (event) => {
+    event.stopPropagation();
 
-function launchReport(){
-
-    if(!currentReport){
-        showStatus("❌ Aucun support préparé.");
-        return;
+    if(sadeusSong.paused){
+        sadeusSong.play().then(() => {
+            soundButton.textContent = "𓆙 𝐒𝐎𝐍𝐆 ⏸";
+        }).catch(() => {});
+    }else{
+        sadeusSong.pause();
+        soundButton.textContent = "𓆙 𝐒𝐎𝐍𝐆 ▶";
     }
+});
 
-    const reportBox =
-        document.getElementById("dynamicSupport");
+prevSong.addEventListener("click", (event) => {
+    event.stopPropagation();
+    loadTrack(currentTrack - 1, true);
+});
 
-    if(!reportBox){
-        return;
+nextSong.addEventListener("click", (event) => {
+    event.stopPropagation();
+    loadTrack(currentTrack + 1, true);
+});
+
+sadeusSong.addEventListener("ended", () => {
+    loadTrack(currentTrack + 1, true);
+});
+
+document.addEventListener("click", (event) => {
+    if(!event.target.closest(".sound-player")){
+        songMenu.classList.remove("open");
     }
+});
 
-    reportBox.innerHTML = `
-        <div class="support-screen">
-        <div class="support-note">
-    ⚠️ NB : Les supports intégrés au site sont des modèles. Si vous constatez qu’ils ne donnent plus les résultats que vous recherchez, n’hésitez pas à les modifier et à utiliser vos propres supports, adaptés à votre situation.
+loadTrack(currentTrack, false);
+</script>
+<div id="supportsPage" style="display:none;">
+    <iframe
+        src="/templates/supports.html"
+        style="width:100%;height:100vh;border:0;background:#070007;">
+    </iframe>
 </div>
-            <button
-                type="button"
-                id="backToSupport"
-                class="back-category-button">
-                ← RETOUR
-            </button>
 
-            <div class="support-heading">
-                <span>⚡</span>
-                <div>
-                    <small>ACTION</small>
-                    <h2>CHOISIR UN MOYEN</h2>
-                </div>
-            </div>
+<script>
+window.addEventListener("message", function(event){
+    if(event.data && event.data.action === "backToReport"){
+        const supportsPage = document.getElementById("supportsPage");
+        const reportPage = document.getElementById("reportPage");
 
-            <div class="support-divider"></div>
+        if(supportsPage) supportsPage.style.display = "none";
+        if(reportPage) reportPage.style.display = "block";
 
-            <div class="report-actions">
-
-                <button
-                    type="button"
-                    class="report-action-button"
-                    id="emailAction">
-                    <span>✉️</span>
-                    <div>
-                        <strong>PAR E-MAIL</strong>
-                        <small>Préparer le signalement par e-mail</small>
-                    </div>
-                    <b>→</b>
-                </button>
-
-                <button
-                    type="button"
-                    class="report-action-button"
-                    id="officialChannel1">
-                    <span>🌐</span>
-                    <div>
-                        <strong>CANAL OFFICIEL 1</strong>
-                        <small>Canal 1</small>
-                    </div>
-                    <b>↗</b>
-                </button>
-
-                <button
-                    type="button"
-                    class="report-action-button"
-                    id="officialChannel2">
-                    <span>🌐</span>
-                    <div>
-                        <strong>CANAL OFFICIEL 2</strong>
-                        <small>Canal 2</small>
-                    </div>
-                    <b>↗</b>
-                </button>
-
-                <button
-                    type="button"
-                    class="report-action-button"
-                    id="whatsappContactAction">
-                    <span>💬</span>
-                    <div>
-                        <strong>CONTACT WHATSAPP</strong>
-                        <small>Depuis l'application WhatsApp</small>
-                    </div>
-                    <b>→</b>
-                </button>
-
-            </div>
-
-        </div>
-    `;
-
-    document.getElementById("backToSupport").onclick =
-        () => openSupport(currentType);
-
-    document.getElementById("emailAction").onclick =
-        openMail;
-
-    document.getElementById("officialChannel1").onclick =
-        () => {
-            window.open(
-                "https://www.whatsapp.com/contact/noclient?lang=fr_FR",
-                "_blank"
-            );
-        };
-
-    document.getElementById("officialChannel2").onclick =
-        () => {
-            window.open(
-                "https://www.whatsapp.com/contact",
-                "_blank"
-            );
-        };
-
-    document.getElementById("whatsappContactAction").onclick =
-        () => {
-
-            reportBox.innerHTML = `
-                <div class="support-screen">
-
-                    <button
-                        type="button"
-                        id="backToActions"
-                        class="back-category-button">
-                        ← RETOUR
-                    </button>
-
-                    <div class="support-heading">
-                        <span>💬</span>
-                        <div>
-                            <small>CONTACT WHATSAPP</small>
-                            <h2>NOUS CONTACTER</h2>
-                        </div>
-                    </div>
-
-                    <div class="support-divider"></div>
-
-                    <div class="status">
-                        <strong>COMMENT FAIRE</strong>
-                    </div>
-
-                    <div class="field-group" style="margin-top:16px;">
-                        <textarea readonly>1. Copie le support avec le numéro pré-rempli.
-
-2. Ouvre l'application WhatsApp.
-
-3. Va dans :
-Paramètres → Aide et commentaires → Nous contacter
-
-4. Colle le support.
-
-5. Vérifie les informations puis envoie le contact à WhatsApp.</textarea>
-                    </div>
-
-                </div>
-            `;
-
-            document.getElementById("backToActions").onclick =
-                launchReport;
-        };
-}
-
-function openMail(){
-
-    if(!currentReport){
-
-        showStatus(
-            "❌ Prépare d'abord le signalement."
-        );
-
-        return;
+        window.scrollTo(0,0);
     }
-
-
-    const recipients =
-        accountType === "business"
-            ? BUSINESS_EMAILS
-            : MESSENGER_EMAILS;
-
-
-    const subject =
-        accountType === "business"
-            ? "Signalement WhatsApp Business"
-            : "Signalement WhatsApp";
-
-
-    const mailto =
-        "mailto:" +
-        recipients.join(",") +
-        "?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(currentReport);
-
-
-    showStatus(
-        accountType === "business"
-            ? "📧 E-mail Business préparé."
-            : "📧 E-mail Messenger préparé."
-    );
-
-
-    window.location.href = mailto;
-}
-
-
-async function copyReport(){
-
-    if(!currentReport){
-        return false;
-    }
-
-    try{
-
-        await navigator.clipboard.writeText(
-            currentReport
-        );
-
-        return true;
-
-    }catch(error){
-
-        console.log(
-            "Copie indisponible",
-            error
-        );
-
-        return false;
-    }
-}
-
-
-async function openWhatsAppContact(){
-
-    if(!currentReport){
-
-        showStatus(
-            "❌ Prépare d'abord le signalement."
-        );
-
-        return;
-    }
-
-
-    const copied =
-        await copyReport();
-
-
-    if(copied){
-
-        showStatus(
-            "📋 Support copié. Le contact officiel WhatsApp va être ouvert. Colle ensuite le support et envoie-le manuellement."
-        );
-
-    }else{
-
-        showStatus(
-            "💬 Le contact officiel WhatsApp va être ouvert. Utilise le support affiché ci-dessus."
-        );
-
-    }
-
-
-    setTimeout(() => {
-
-        window.open(
-            OFFICIAL_CONTACT,
-            "_blank"
-        );
-
-    }, 300);
-}
-
-
-async function openOfficialChannel(){
-
-    if(!currentReport){
-
-        showStatus(
-            "❌ Prépare d'abord le signalement."
-        );
-
-        return;
-    }
-
-
-    const copied =
-        await copyReport();
-
-
-    if(copied){
-
-        showStatus(
-            "📋 Support copié. Entre dans le canal officiel, clique sur « Nous contacter », colle le support puis envoie-le."
-        );
-
-    }else{
-
-        showStatus(
-            "🌐 Entre dans le canal officiel, clique sur « Nous contacter », puis utilise le support affiché ci-dessus."
-        );
-
-    }
-
-
-    setTimeout(() => {
-
-        window.open(
-            OFFICIAL_CONTACT,
-            "_blank"
-        );
-
-    }, 300);
-}
-
-
-async function saveLocalReport(
-    target,
-    type,
-    description
-){
-
-    try{
-
-        const body =
-            new URLSearchParams();
-
-        body.append(
-            "target",
-            target
-        );
-
-        body.append(
-            "type",
-            type
-        );
-
-        body.append(
-            "description",
-            description
-        );
-
-
-        await fetch(
-            API + "/api/report",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type":
-                        "application/x-www-form-urlencoded"
-                },
-
-                body:
-                    body.toString()
-            }
-        );
-
-
-        loadHistory();
-
-    }catch(error){
-
-        console.log(
-            "Historique local indisponible",
-            error
-        );
-
-    }
-}
-
-
-async function loadHistory(){
-
-    const history =
-        document.getElementById("history");
-
-    if(!history){
-        return;
-    }
-
-
-    try{
-
-        const response =
-            await fetch(
-                API + "/api/history"
-            );
-
-        const data =
-            await response.json();
-
-
-        if(
-            !data.success ||
-            !Array.isArray(data.items)
-        ){
-
-            history.innerHTML =
-                "<p class='small'>Aucun historique.</p>";
-
-            return;
-        }
-
-
-        if(data.items.length === 0){
-
-            history.innerHTML =
-                "<p class='small'>Aucun signalement enregistré.</p>";
-
-            return;
-        }
-
-
-        history.innerHTML =
-            data.items
-                .slice()
-                .reverse()
-                .map(item => {
-
-                    return `
-                        <div class="history-item">
-
-                            <strong>
-                                ${escapeHTML(item.target)}
-                            </strong>
-
-                            <br>
-
-                            <span class="badge">
-                                ${escapeHTML(item.type)}
-                            </span>
-
-                            <div class="small">
-                                ${escapeHTML(item.date || "")}
-                            </div>
-
-                            <div class="small">
-                                Statut :
-                                ${escapeHTML(
-                                    item.status || "reçu"
-                                )}
-                            </div>
-
-                        </div>
-                    `;
-
-                })
-                .join("");
-
-
-    }catch(error){
-
-        history.innerHTML =
-            "<p class='small'>API indisponible.</p>";
-
-    }
-}
-
-
-/* =====================================================
-   CATÉGORIES
-   ===================================================== */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        const button =
-            event.target.closest(
-                ".report-type-btn[data-type]"
-            );
-
-        if(!button){
-            return;
-        }
-
-        event.preventDefault();
-
-        const type =
-            button.getAttribute("data-type");
-
-        if(type){
-            openSupport(type);
-        }
-
-    }
-);
-
-
-/* =====================================================
-   INITIALISATION
-   ===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        selectAccountType(
-            accountType
-        );
-
-        loadHistory();
-
-    }
-);
-
-
-/* ===== AUDIO SADEUS ===== */
-document.addEventListener("DOMContentLoaded", function () {
-    const audio = document.getElementById("sadeusAudio");
-    const button = document.getElementById("audioToggle");
-
-    if (!audio || !button) return;
-
-    button.addEventListener("click", function () {
-        if (audio.paused) {
-            audio.play()
-                .then(() => {
-                    button.textContent = "🔊";
-                })
-                .catch(() => {
-                    button.textContent = "🔇";
-                });
-        } else {
-            audio.pause();
-            button.textContent = "🔇";
-        }
-    });
 });
-
+</script>
+<script>
+function backToHome(){
+    document.getElementById("reportPage").style.display = "none";
+    document.querySelector(".page").style.display = "block";
+    window.scrollTo(0,0);
+}
 </script>
 </body>
 </html>
 
-<script>
-let deferredPrompt;
-
-window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-});
-
-window.addEventListener("appinstalled", () => {
-    console.log("Gojo-wa-ban-app installée");
-});
-</script>
-
-<script>
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/static/sw.js");
-    });
-}
-</script>
